@@ -1,0 +1,31 @@
+{
+  "name": "parks-2.0-thesql",
+  "version": "1.0.0",
+  "description": "Application to store and search for area parks.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shaun24/PARKS-2.0-theSQL.git"
+  },
+  "keywords": [
+    "parks",
+    "trails",
+    "fun"
+  ],
+  "author": "SJBBBC",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/shaun24/PARKS-2.0-theSQL/issues"
+  },
+  "homepage": "https://github.com/shaun24/PARKS-2.0-theSQL#readme",
+  "dependencies": {
+    "axios": "^0.18.0",
+    "body-parser": "^1.18.2",
+    "express": "^4.16.3",
+    "mongoose": "^5.0.17"
+  }
+}
