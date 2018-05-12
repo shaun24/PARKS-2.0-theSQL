@@ -1,0 +1,23 @@
+  <!-- parks a to z -->
+<div class="header">
+        <h1> Parks A - Z </h1>
+        <h2>Select a park for more information</h2>
+</div>
+
+<ul class="pure-g all">
+    {{#each parks}}
+    <div class="pure-u-4-5 a-z solo" style="background-image: url('./assets/images/parks/{{id}}.jpg');">
+        <div class="info">
+           <a href="/{{parkName}}"><h2>{{parkName}}</h2></a>
+            <h6>{{address}} | Size: {{size}}</h6>
+        </div>
+        
+    {{!-- partial for icon list --}}
+        {{!-- <div class="pure-u-8-12 .bar"> --}}
+            {{> parks/park-block}}
+        {{!-- </div> --}}
+        
+        
+    </div>           
+    {{/each}}
+</ul>

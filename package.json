@@ -1,40 +1,42 @@
 {
-  "name": "parks-2.0-thesql",
+  "name": "parksandrec",
   "version": "1.0.0",
-  "description": "Application to store and search for area parks.",
+  "description": "park and playground app",
   "main": "server.js",
   "scripts": {
-    "server": "node server.js",
-    "client": "node scripts/start-client.js",
-    "start": "concurrently \"nodemon server.js\" \"npm run client\"",
-    "build": "node scripts/build.js",
-    "seed": "node scripts/seedDB.js",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "installDeps": "yarn && cd client && yarn"
+    "test": "ava",
+    "start": "node server.js",
+    "test:watch": "ava --watch"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/shaun24/PARKS-2.0-theSQL.git"
+    "url": "git+https://github.com/Bmacclt/parksandrec.git"
   },
   "keywords": [
-    "parks",
+    "park",
     "trails",
     "fun"
   ],
-  "author": "SJBBBC",
+  "author": "SJBB",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/shaun24/PARKS-2.0-theSQL/issues"
+    "url": "https://github.com/Bmacclt/parksandrec/issues"
   },
-  "homepage": "https://github.com/shaun24/PARKS-2.0-theSQL#readme",
-  "devDependencies": {
-    "concurrently": "^3.5.0",
-    "nodemon": "^1.11.0"
-  },
+  "homepage": "https://github.com/Bmacclt/parksandrec#readme",
   "dependencies": {
-    "axios": "^0.18.0",
+    "@google/maps": "^0.4.6",
     "body-parser": "^1.18.2",
     "express": "^4.16.3",
-    "mongoose": "^5.0.17"
+    "express-handlebars": "^3.0.0",
+    "handlebars": "^4.0.11",
+    "mysql": "^2.15.0",
+    "mysql2": "^1.5.3",
+    "purecss": "^1.0.0",
+    "sequelize": "^4.37.6",
+    "sinon": "^4.5.0"
+  },
+  "devDependencies": {
+    "ava": "^0.25.0",
+    "nyc": "^11.6.0"
   }
 }

@@ -1,0 +1,16 @@
+{{!-- individual park page --}}  
+{{#with parks}} 
+<div class="header solo" style="background-image: url('./assets/images/parks/{{id}}.jpg');">
+    <div class="box">
+        <h1>{{parkName}}</h1>
+        <h2>{{address}}</h2>
+        <h3>size:{{size}}</h3>    
+        
+    </div>  
+</div>
+
+<div class="parcon">
+       {{> parks/park-block}} 
+    </div>
+
+{{/with}}

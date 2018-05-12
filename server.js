@@ -1,39 +1,36 @@
-// require the node modules
-const express = require("express");
-const bodyParser = require("body-parser");
-const mongoose = require("mongoose");
+var express = require("express");
+var bodyParser = require("body-parser");
+var app = express();
+var exphbs = require("express-handlebars");
+var db = require("./models");
 
-// create the express app
-const app = express();
 
-// set application port
-const PORT = process.env.PORT || 8080;
+var PORT = process.env.PORT || 3000;
 
-// require models for syncing
-const db = require("./models");
 
-// require routes
-const routes = require("./routes");
-
-// set up the express app to handle data parsing
+// parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: true }));
+
+// parse application/json
 app.use(bodyParser.json());
+app.use(express.static(process.cwd() + '/public'));
 
-// Serve up static assets
-app.use(express.static("client/build"));
+// app.use(express.static(process.cwd() + '/features'));
+// Set Handlebars.
+app.engine("handlebars", exphbs({ defaultLayout: "main" }));
+app.set("view engine", "handlebars");
+// Serve static content for the app from the "public" directory in the application directory.
 
-// Add routes, both API and view
-app.use(routes);
 
-// If deployed, use the deployed database. Otherwise use the local mongoHeadlines database
-var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/parksandrec";
 
-// Set mongoose to leverage built in JavaScript ES6 Promises
-// Connect to the Mongo DB
-mongoose.Promise = Promise;
-mongoose.connect(MONGODB_URI);
+//ROUTES 
+//======================================================
+require("./routes/routes.js")(app);
+require("./routes/apiRoutes.js")(app);
 
-// Start the API server
-app.listen(PORT, function() {
-  console.log(`🌎  ==> API Server now listening on PORT ${PORT}!`);
-});
+db.sequelize.sync({ force: false }).then(function() {
+    app.listen(PORT, function() {
+      console.log("App listening on PORT " + PORT);
+    });
+  });
+

@@ -1,0 +1,73 @@
+<div class="header">
+        <h1> Add a Park </h1>
+        <h2>Add your favorite park to our database </h2>
+</div>
+<div class="add-park content">
+    <form class="pure-form pure-form-stacked " action="/api/parks" target="_blank" method="POST">
+        <fieldset class="pure-group">
+        
+            <input type="text" name="parkName" placeholder="Park Name" class="pure-input-1"><br>
+
+            <input type="text" name="address" placeholder="Address" class="pure-input-1"><br>
+
+            {{!-- <input type="text" name="size" placeholder="size"> --}}
+
+            <select  name="size" class="pure-input-1">
+                <option disabled selected value="">Choose a Size</option>
+                <option value="small"> Small ( < 30 acres)</option>
+                <option value="medium"> Medium (30 - 70 acres)</option>
+                <option value="large"> Large ( > 70 acres)</option>
+            </select>
+        </fieldset>
+        
+        <div class="pure-g form-boxes">
+            <div class="pure-control-group pure-u-1-2">
+                       
+                <input type="checkbox" name="basketball" value="1"> Basketball <br>
+                <input type="checkbox" name="dogPark" value="1"> Dog Park <br>
+                <input type="checkbox" name="golf" value="1"> Golf <br>
+                <input type="checkbox" name="handiAces" value="1"> Wheelchair Accessible <br>                            
+                <input type="checkbox" name="playground" value="1"> Playgrounds <br>
+                <input type="checkbox" name="soccer" value="1"> Soccer <br>
+            </div>
+            <div class="pure-control-group pure-u-1-2">      
+                <input type="checkbox" name="tennis" value="1"> Tennis <br>
+                <input type="checkbox" name="trails" value="1"> Hiking Trails <br>            
+                <input type="checkbox" name="restrooms" value="1"> Restrooms <br>                      
+                <input type="checkbox" name="vendingMachines" value="1"> Vending Machines <br>
+                <input type="checkbox" name="views" value="1"> Views <br>
+                <input type="checkbox" name="waterSports" value="1"> Water Activities <br>
+                <input type="checkbox" name="workoutGear" value="1"> Workout Gear <br>
+            </div>           
+            
+        </div>
+
+        <label for="pic"><h4>Upload a Photo</h4></label>
+        <input type="file" name="pic" accept="image/*" placeholder="Park Photo">
+
+        <button type="submit"  class="pure-button pure-button-primary submit-btn" >Submit</button>
+        
+
+       
+    </form>
+</div>
+    {{!-- image upload input  --}}
+
+
+{{!-- </form>
+
+<form action="/api/parks" target="_blank" method="POST">
+  Park Name:<br>
+  <input type="text" name="parkName">
+  <br>
+  Size:<br>
+  <input type="number" name="size">
+  <br>
+    Handicap Access:<br>
+  <input type="checkbox" name="handiAcces" value="true"><br>
+  Restrooms:<br>
+  <input type="checkbox" name="restrooms" value="true"><br>
+  <input type="submit" value="Submit">
+  onClick="this.form.reset()"
+  value="reset form" 
+</form> --}}
