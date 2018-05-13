@@ -46,6 +46,9 @@ module.exports = function(sequelize, DataTypes) {
     Park.hasMany(models.Image, {
       onDelete: "cascade"
     });
+    Park.hasMany(models.Feature, {
+      onDelete: "cascade"
+    });
   };
   
   return Park;

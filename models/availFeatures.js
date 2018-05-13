@@ -12,7 +12,9 @@ module.exports = function(sequelize, DataTypes) {
   });
 
   AvailFeature.associate = function(models){
-    AvailFeature.hasMany(models.AvailDetail, {});
+    AvailFeature.belongsToMany(models.AvailDetail, {
+      through: "feat_det"
+    });
   };
   
   return AvailFeature;
