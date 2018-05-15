@@ -12,8 +12,14 @@ module.exports = function(sequelize, DataTypes) {
   });
 
   AvailDetail.associate = function(models){
-    AvailDetail.belongsToMany(models.AvailFeature, {
-      through: "feat_det"
+    // AvailDetail.belongsToMany(models.AvailFeature, {
+    //   through: "feat_det"
+    // });
+    AvailDetail.belongsTo(models.AvailFeature, {
+      foreignKey: {
+        allowNull: false
+      },
+      onDelete: "cascade"
     });
   };
   
