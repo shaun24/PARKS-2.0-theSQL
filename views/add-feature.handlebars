@@ -11,6 +11,7 @@
                 <option disabled selected value="">Choose a Size</option>
                 {{#each parks}}
                 <option value={{name}}>{{name}}</option>
+                {{/each}}
             </select><br>
 
             <input type="text" name="address" placeholder="Address" class="pure-input-1"><br>
@@ -25,21 +26,8 @@
                 <input type="checkbox" name="handiAccess" value="1"> Wheelchair Accessible <br>                            
                 <input type="checkbox" name="restroooms" value="1"> Restrooms <br>
                 <input type="checkbox" name="soccer" value="1"> Soccer <br>
-            </div>
-            {{!-- <div class="pure-control-group pure-u-1-2">      
-                <input type="checkbox" name="tennis" value="1"> Tennis <br>
-                <input type="checkbox" name="trails" value="1"> Hiking Trails <br>            
-                <input type="checkbox" name="restrooms" value="1"> Restrooms <br>                      
-                <input type="checkbox" name="vendingMachines" value="1"> Vending Machines <br>
-                <input type="checkbox" name="views" value="1"> Views <br>
-                <input type="checkbox" name="waterSports" value="1"> Water Activities <br>
-                <input type="checkbox" name="workoutGear" value="1"> Workout Gear <br>
-            </div>            --}}
-            
+            </div>  
         </div>
-
-        {{!-- <label for="pic"><h4>Upload a Photo</h4></label>
-        <input type="file" name="pic" accept="image/*" placeholder="Park Photo"> --}}
 
         <button type="submit"  class="pure-button pure-button-primary submit-btn" >Submit</button>
         
@@ -47,23 +35,3 @@
        
     </form>
 </div>
-    {{!-- image upload input  --}}
-
-
-{{!-- </form>
-
-<form action="/api/parks" target="_blank" method="POST">
-  Park Name:<br>
-  <input type="text" name="parkName">
-  <br>
-  Size:<br>
-  <input type="number" name="size">
-  <br>
-    Handicap Access:<br>
-  <input type="checkbox" name="handiAcces" value="true"><br>
-  Restrooms:<br>
-  <input type="checkbox" name="restrooms" value="true"><br>
-  <input type="submit" value="Submit">
-  onClick="this.form.reset()"
-  value="reset form" 
-</form> --}}

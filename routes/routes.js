@@ -72,6 +72,20 @@ module.exports = function(app) {
       });
   });
 
+  app.get("/add-feature", function(req, res) {
+    db.Park.findAll({        
+      order:  ["name"]
+        
+    }).then(function(dbPark) {
+    var hbsObject = {
+      parks: dbPark,
+      az : {selected : true}
+    };
+            
+    res.render("add-feature", hbsObject);
+    });
+});
+
   //Individual Feature Page
   //=====================================================
   app.get("/features/:feature", function(req, res) {
