@@ -169,7 +169,7 @@ module.exports = function(app) {
   //======================================================= 
 
   app.post("/api/parks", function(req, res) {
-      db.AllPark.create(req.body).then(function(dbPark) {
+      db.Parks.create(req.body).then(function(dbPark) {
       res.json(dbPark);    
     });
   }); 
