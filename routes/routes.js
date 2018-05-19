@@ -20,7 +20,7 @@ module.exports = function(app) {
   //====================================================== 
   app.get("/all-parks", function(req, res) {
       db.Park.findAll({        
-        order:  ["parkName"]
+        order:  ["name"]
           
       }).then(function(dbPark) {
       var hbsObject = {
@@ -49,7 +49,7 @@ module.exports = function(app) {
   //=====================================================
   app.get("/about", function(req, res) {
     db.Park.findAll({
-      order:  ["parkName"]
+      order:  ["name"]
     }).then(function(dbPark) {
     var hbsObject = {
       parks: dbPark,
@@ -74,77 +74,77 @@ module.exports = function(app) {
 
   //Individual Feature Page
   //=====================================================
-  // app.get("/features/:feature", function(req, res) {
-  //   var feature = req.params.feature;
-  //   var whereClause = {};
-  //   console.log(feature);
-  //   switch(feature) {
-  //     case "basketball":          
-  //     whereClause = {basketball : true}; 
-  //     break;
+  app.get("/features/:feature", function(req, res) {
+    var feature = req.params.feature;
+    var whereClause = {};
+    console.log(feature);
+    switch(feature) {
+      case "basketball":          
+      whereClause = {basketball : true}; 
+      break;
 
-  //     case "dogPark":
-  //     whereClause = {dogPark : true};    
-  //     break;
+      case "dogPark":
+      whereClause = {dogPark : true};    
+      break;
 
-  //     case "golf":
-  //     whereClause = {golf : true};    
-  //     break;
+      case "golf":
+      whereClause = {golf : true};    
+      break;
 
-  //     case "handiAcces":
-  //     whereClause = {handiAcces : true};    
-  //     break;
+      case "handiAcces":
+      whereClause = {handiAcces : true};    
+      break;
 
-  //     case "playground":
-  //     whereClause = {playground : true};    
-  //     break;
+      case "playground":
+      whereClause = {playground : true};    
+      break;
 
-  //     case "soccer":
-  //     whereClause = {soccer : true};    
-  //     break;
+      case "soccer":
+      whereClause = {soccer : true};    
+      break;
 
-  //     case "tennis":
-  //     whereClause = {tennis : true};    
-  //     break;
+      case "tennis":
+      whereClause = {tennis : true};    
+      break;
 
-  //     case "trails":
-  //     whereClause = {trails : true};    
-  //     break;
+      case "trails":
+      whereClause = {trails : true};    
+      break;
 
-  //     case "vendingMachines":
-  //     whereClause = {vendingMachines : true};    
-  //     break;
+      case "vendingMachines":
+      whereClause = {vendingMachines : true};    
+      break;
 
-  //     case "views":
-  //     whereClause = {views : true};    
-  //     break;
+      case "views":
+      whereClause = {views : true};    
+      break;
 
-  //     case "waterSports":
-  //     whereClause = {waterSports : true};    
-  //     break;
+      case "waterSports":
+      whereClause = {waterSports : true};    
+      break;
 
-  //     case "workoutGear":
-  //     whereClause = {workoutGear : true};    
-  //     break;
+      case "workoutGear":
+      whereClause = {workoutGear : true};    
+      break;
 
-  //     case parkName:
-  //     whereClause = {parkName : req.param.body}
+      case name:
+      whereClause = {name : req.param.body}
         
      
-  //   }
-  //   db.Park.findAll({  
-  //     where: whereClause,  
-  //     order: ["name"]
-  //   }).then(function(dbPark) {     
-  //     var hbsObject = {
-  //       parks: dbPark,
-  //       layout: "main"
-  //     };
+    }
+    db.Park.findAll({  
+      where: whereClause,  
+      order: ["name"]
+    }).then(function(dbPark) {     
+      var hbsObject = {
+        parks: dbPark,
+        layout: "main"
+      };
      
-  //     res.render("feature", hbsObject);
+      res.render("feature", hbsObject);
               
-  //     });
-  // });
+      });
+  });
 
   //Individual Park Page 
   //=====================================================
