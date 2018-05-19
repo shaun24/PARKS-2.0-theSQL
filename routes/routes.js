@@ -4,7 +4,7 @@ module.exports = function(app) {
   //Home Page
   //=======================================================
   app.get("/", function(req, res) {
-        db.AllPark.findAll({}).then(function(dbPark) {
+        db.Park.findAll({}).then(function(dbPark) {
        
         var hbsObject = {
           parks: dbPark,
@@ -19,8 +19,8 @@ module.exports = function(app) {
   //Parks A-Z 
   //====================================================== 
   app.get("/all-parks", function(req, res) {
-      db.AllPark.findAll({        
-        order:  ["parkName"]
+      db.Park.findAll({        
+        //order:  ["parkName"]
           
       }).then(function(dbPark) {
       var hbsObject = {
@@ -35,7 +35,7 @@ module.exports = function(app) {
   //All Features
   //=====================================================
   app.get("/all-features", function(req, res) {
-    db.AllPark.findAll({}).then(function(dbPark) {
+    db.Park.findAll({}).then(function(dbPark) {
     var hbsObject = {
       parks: dbPark,
       feat : {selected : true}
@@ -48,7 +48,7 @@ module.exports = function(app) {
   //About
   //=====================================================
   app.get("/about", function(req, res) {
-    db.AllPark.findAll({
+    db.Park.findAll({
       order:  ["parkName"]
     }).then(function(dbPark) {
     var hbsObject = {
@@ -62,7 +62,7 @@ module.exports = function(app) {
   //Add Park
   //===================================================== 
   app.get("/add-park", function(req, res) {
-      db.AllPark.findAll({}).then(function(dbPark) {
+      db.Park.findAll({}).then(function(dbPark) {
       var hbsObject = {
         parks: dbPark,
         add : {selected : true}
