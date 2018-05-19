@@ -20,7 +20,7 @@ module.exports = function(app) {
   //====================================================== 
   app.get("/all-parks", function(req, res) {
       db.Park.findAll({        
-        //order:  ["parkName"]
+        order:  ["name"]
           
       }).then(function(dbPark) {
       var hbsObject = {
@@ -49,7 +49,7 @@ module.exports = function(app) {
   //=====================================================
   app.get("/about", function(req, res) {
     db.Park.findAll({
-      order:  ["parkName"]
+      order:  ["name"]
     }).then(function(dbPark) {
     var hbsObject = {
       parks: dbPark,
@@ -71,6 +71,20 @@ module.exports = function(app) {
       res.render("add-park", hbsObject);
       });
   });
+
+  app.get("/add-feature", function(req, res) {
+    db.Park.findAll({        
+      order:  ["name"]
+        
+    }).then(function(dbPark) {
+    var hbsObject = {
+      parks: dbPark,
+      az : {selected : true}
+    };
+            
+    res.render("add-feature", hbsObject);
+    });
+});
 
   //Individual Feature Page
   //=====================================================
@@ -127,14 +141,14 @@ module.exports = function(app) {
       whereClause = {workoutGear : true};    
       break;
 
-      case parkName:
-      whereClause = {parkName : req.param.body}
+      case name:
+      whereClause = {name : req.param.body}
         
      
     }
-    db.AllPark.findAll({  
+    db.Park.findAll({  
       where: whereClause,  
-      order: ["parkName"]
+      order: ["name"]
     }).then(function(dbPark) {     
       var hbsObject = {
         parks: dbPark,
@@ -150,9 +164,9 @@ module.exports = function(app) {
   //=====================================================
 
   app.get("/:name", function(req, res) {
-      db.AllPark.findOne({
+      db.Park.findOne({
         where: {
-          parkName : req.params.name
+          name : req.params.name
         }        
       }).then(function(dbPark) {     
       var hbsObject = {
@@ -169,7 +183,7 @@ module.exports = function(app) {
   //======================================================= 
 
   app.post("/api/parks", function(req, res) {
-      db.AllPark.create(req.body).then(function(dbPark) {
+      db.Park.create(req.body).then(function(dbPark) {
       res.json(dbPark);    
     });
   }); 
