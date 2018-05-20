@@ -27,6 +27,7 @@ $(document).ready(function(){
 
   // add Feature button click
   $(document).on("submit", "#new-feature", function(event) {
+    event.preventDefault();
     var form = $("#new-feature").serializeArray();
     var data = {};
     form.forEach(function(item) {
