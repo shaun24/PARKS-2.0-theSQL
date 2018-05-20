@@ -184,8 +184,18 @@ module.exports = function (app) {
   //======================================================= 
 
   app.post("/api/parks", function (req, res) {
-    db.Park.create(req.body).then(function (dbPark) {
+    if (req.body.restrooms === "") {
+      req.body.restrooms = 0;
+    };
+    if (req.body.size === "") {
+      req.body.size = null;
+    };
+    db.Park.create(
+      req.body
+    ).then(function (dbPark) {
       res.json(dbPark);
+    }).catch(function (err){
+      res.json(err);
     });
   });
 

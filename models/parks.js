@@ -10,16 +10,12 @@ module.exports = function(sequelize, DataTypes) {
       }
     },
     size: {
-      type: DataTypes.DECIMAL(10, 2),
-      validate: {
-        notEmpty: true,
-        isDecimal: true
-      }
+      type: DataTypes.DECIMAL(10, 2)
     },
     handiAccess: {
       type: DataTypes.BOOLEAN,
       allowNull: false,
-      default: false,
+      defaultValue: false,
       validate: {
         notEmpty: true
       }
@@ -27,7 +23,7 @@ module.exports = function(sequelize, DataTypes) {
     restrooms: {
       type: DataTypes.INTEGER,
       allowNull: false,
-      default: 0,
+      defaultValue: 0,
       validate: {
         notEmpty: true,
         isInt: true
