@@ -22,8 +22,7 @@ $(document).ready(function(){
     form.forEach(function(item){
       data[item.name] = item.value;
     });
-    console.log(data);
-    // add(data, "parks");
+    add(data, "parks");
   });
 
   // add Feature button click
