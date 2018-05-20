@@ -82,7 +82,13 @@ module.exports = function (app) {
         az: { selected: true }
       };
 
-      res.render("add-feature", hbsObject);
+      db.AvailFeature.findAll({
+        order: ["name"]
+      }).then(function(dbFeature) {
+        hbsObject.features = dbFeature;
+        res.render("add-feature", hbsObject);
+      });
+
     });
 
   });

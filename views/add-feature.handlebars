@@ -6,7 +6,7 @@
     <form class="pure-form pure-form-stacked " action="/api/features" target="_blank" method="POST">
         <fieldset class="pure-group">
         
-            <select  name="name" class="pure-input-1">
+            <select  name="park-name" class="pure-input-1">
                 
                 <option disabled selected value="">Pick a Park to add a feature too</option>
                 {{#each parks}}
@@ -14,7 +14,13 @@
                 {{/each}}
             </select><br>
 
-            <input type="text" name="name" placeholder="feature name" class="pure-input-1"><br>           
+            <select  name="feature-name" class="pure-input-1">
+                
+                <option disabled selected value="">Pick a Feature add to the selected park</option>
+                {{#each features}}
+                <option value={{id}}>{{name}}</option>
+                {{/each}}
+            </select><br>
             
         </fieldset>
         
