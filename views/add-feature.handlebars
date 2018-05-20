@@ -1,12 +1,13 @@
 <div class="header">
         <h1> Add a Feature to a Park </h1>
-        <h2 id="subheader">Add a new feature to a park we may have missed to our database </h2>
+        <h2 id="subheader">Add a new feature to a park we may have missed to our database</h2>
 </div>
-<div class="add-park content">
-    <form class="pure-form pure-form-stacked " action="/api/features" target="_blank" method="POST">
+<div class="add-feature content">
+    <form class="pure-form pure-form-stacked" id="new-feature">
+    {{!-- <form class="pure-form pure-form-stacked " action="/api/features" target="_blank" method="POST"> --}}
         <fieldset class="pure-group">
         
-            <select  name="park-name" class="pure-input-1">
+            <select  name="ParkId" class="pure-input-1">
                 
                 <option disabled selected value="">Pick a Park to add a feature too</option>
                 {{#each parks}}
@@ -14,11 +15,11 @@
                 {{/each}}
             </select><br>
 
-            <select  name="feature-name" class="pure-input-1">
+            <select  name="name" class="pure-input-1">
                 
                 <option disabled selected value="">Pick a Feature add to the selected park</option>
                 {{#each features}}
-                <option value={{id}}>{{name}}</option>
+                <option>{{name}}</option>
                 {{/each}}
             </select><br>
             

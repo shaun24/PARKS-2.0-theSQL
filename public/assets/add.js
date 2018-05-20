@@ -1,9 +1,9 @@
 $(document).ready(function(){
-  // function to add new Parks
-  function addPark(data){
+  // function to add new Parks/Features
+  function add(data, api){
     $.ajax({
       method: "POST",
-      url: "/api/parks",
+      url: `/api/${api}`,
       data: data
     }).then(function(result) {
       if (result.errors) {
@@ -15,17 +15,36 @@ $(document).ready(function(){
   };
 
   // add Park button click
-  $(document).on("submit", "#add-park", function(event) {
+  $(document).on("submit", "#new-park", function(event) {
     event.preventDefault();
-    var form = $("#add-park").serializeArray();
+    var form = $("#new-park").serializeArray();
     var data = {};
     form.forEach(function(item){
       data[item.name] = item.value;
     });
-    addPark(data);
+    console.log(data);
+    // add(data, "parks");
+  });
+
+  // add Feature button click
+  $(document).on("submit", "#new-feature", function(event) {
+    var form = $("#new-feature").serializeArray();
+    var data = {};
+    form.forEach(function(item) {
+      data[item.name] = item.value;
+    });
+    add(data, "features");
   });
 
   $("input").focus(function(){
-    $("#subheader").text("Add your favorite park to our database");
-  })
+    if (window.location.pathname === "/add-park"){
+      $("#subheader").text("Add your favorite park to our database");
+    };
+  });
+
+  $("select").focus(function(){
+    if (window.location.pathname === "/add-feature"){
+      $("#subheader").text("Add a new feature to a park we may have missed to our database");
+    };
+  });
 });
