@@ -206,12 +206,19 @@ module.exports = function (app) {
   });
 
   app.post("/api/features", function (req, res) {
-    db.Feature.create(
-      req.body
-    ).then(function (dbFeature) {
+    db.Feature.bulkCreate(
+      req.body.array
+    ).then(function(dbFeature) {
       res.json(dbFeature);
-    }).catch(function (err){
+    }).catch(function(err) {
       res.json(err);
     });
+    // db.Feature.create(
+    //   req.body
+    // ).then(function (dbFeature) {
+    //   res.json(dbFeature);
+    // }).catch(function (err){
+    //   res.json(err);
+    // });
   });
 };
