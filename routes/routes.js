@@ -221,4 +221,17 @@ module.exports = function (app) {
     //   res.json(err);
     // });
   });
+
+//sign-in
+
+app.get("/sign-in", function (req, res) {
+  db.User.findAll({}).then(function (dbUser) {
+    var hbsObject = {
+      users: dbUser,
+      add: { selected: true }
+    };
+
+    res.render("sign-in", hbsObject);
+  });
+});
 };
