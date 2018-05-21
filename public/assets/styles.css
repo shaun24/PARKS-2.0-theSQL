@@ -1,0 +1,21 @@
+.flex-container {
+    display: flex;
+    border: 2px solid black;
+    min-height: 100vh;
+
+}
+
+.header {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#menu {
+    flex: 2;
+    order: 1;
+}
+
+.body {
+    flex: 5;
+    order 2;
+}
