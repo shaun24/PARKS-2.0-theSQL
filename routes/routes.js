@@ -82,7 +82,13 @@ module.exports = function (app) {
         az: { selected: true }
       };
 
-      res.render("add-feature", hbsObject);
+      db.AvailFeature.findAll({
+        order: ["name"]
+      }).then(function(dbFeature) {
+        hbsObject.features = dbFeature;
+        res.render("add-feature", hbsObject);
+      });
+
     });
 
   });
@@ -200,15 +206,19 @@ module.exports = function (app) {
   });
 
   app.post("/api/features", function (req, res) {
-    var query = {};
-    if (req.query.parks.id) {
-      query.ParksId = req.query.parks.id;
-    }
-    db.Feature.findAll({
-      where: query,
-      include: [db.Parks]
-    }).then(function (dbPark) {
-      res.json(dbPark);
+    db.Feature.bulkCreate(
+      req.body.array
+    ).then(function(dbFeature) {
+      res.json(dbFeature);
+    }).catch(function(err) {
+      res.json(err);
     });
+    // db.Feature.create(
+    //   req.body
+    // ).then(function (dbFeature) {
+    //   res.json(dbFeature);
+    // }).catch(function (err){
+    //   res.json(err);
+    // });
   });
 };

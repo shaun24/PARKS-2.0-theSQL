@@ -1,30 +1,50 @@
 <div class="header">
-        <h1> Add a Feature to a Park </h1>
-        <h2>Add a new feature to a park we may have missed to our database </h2>
+        <h1> Add Park Features </h1>
+        <h2 id="subheader">Add new features to a park we may have missed to our database</h2>
 </div>
-<div class="add-park content">
-    <form class="pure-form pure-form-stacked " action="/api/features" target="_blank" method="POST">
+<div class="add-feature content">
+    <form class="pure-form pure-form-stacked" id="new-feature">
+    {{!-- <form class="pure-form pure-form-stacked " action="/api/features" target="_blank" method="POST"> --}}
         <fieldset class="pure-group">
         
-            <select  name="name" class="pure-input-1">
+            <select  name="ParkId" class="pure-input-1">
                 
-                <option disabled selected value="">Pick a Park to add a feature too</option>
+                <option disabled selected value="">Pick a Park to add a feature to</option>
                 {{#each parks}}
                 <option value={{id}}>{{name}}</option>
                 {{/each}}
             </select><br>
 
-            <input type="text" name="name" placeholder="feature name" class="pure-input-1"><br>           
+            {{!-- <select  name="name" class="pure-input-1">
+                
+                <option disabled selected value="">Pick a Feature add to the selected park</option>
+                {{#each features}}
+                <option>{{name}}</option>
+                {{/each}}
+            </select><br> --}}
             
         </fieldset>
-        
+
         <div class="pure-g form-boxes">
+            <div class="pure-control-group pure-u-1-2">
+                {{#each features}}
+                <fieldset>
+                    <input type="checkbox" name={{name}} value="1"> {{name}} <br>
+                    <input type="checkbox" name={{name}} value="lighted"> Lighted after dark
+                    <input type="checkbox" name={{name}} value="indoors"> Indoors
+                    <input type="checkbox" name={{name}} value="covered"> Covered <br><br>
+                </fieldset>
+                {{/each}}
+            </div>
+        </div>
+        
+        {{!-- <div class="pure-g form-boxes">
             <div class="pure-control-group pure-u-1-2">
                 <input type="checkbox" name="lighted" value="1"> Lighted after dark <br>                            
                 <input type="checkbox" name="indoor" value="1"> Indoors <br>
                 <input type="checkbox" name="covered" value="1"> Covered <br>
             </div>  
-        </div>
+        </div> --}}
 
         <button type="submit"  class="pure-button pure-button-primary submit-btn" >Submit</button>
         

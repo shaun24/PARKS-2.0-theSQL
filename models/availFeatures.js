@@ -5,8 +5,7 @@ module.exports = function(sequelize, DataTypes) {
       unique: true,
       allowNull: false,
       validate: {
-        notEmpty: true,
-        isAlphanumeric: true
+        notEmpty: true
       }
     }
   });

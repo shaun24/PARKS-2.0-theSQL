@@ -4,14 +4,13 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
-        notEmpty: true,
-        isAlphanumeric: true
+        notEmpty: true
       }
     },
     lighted: {
       type: DataTypes.BOOLEAN,
       allowNull: false,
-      default: false,
+      defaultValue: false,
       validate: {
         notEmpty: true
       }
@@ -19,7 +18,7 @@ module.exports = function(sequelize, DataTypes) {
     indoor: {
       type: DataTypes.BOOLEAN,
       allowNull: false,
-      default: false,
+      defaultValue: false,
       validate: {
         notEmpty: true
       }
@@ -27,7 +26,7 @@ module.exports = function(sequelize, DataTypes) {
     covered: {
       type: DataTypes.BOOLEAN,
       allowNull: false,
-      default: false,
+      defaultValue: false,
       validate: {
         notEmpty: true
       }
