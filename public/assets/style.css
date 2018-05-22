@@ -79,7 +79,20 @@ body {
     color: #888;
 }
 
-
+/*
+    Modal.
+*/
+#sign-in-modal{
+    display: none;
+    width: 40%;
+    height: 55%;
+    overflow: auto;
+    margin: auto;
+    position: absolute;
+    top: 0; left: 0; bottom: 0; right: 0;
+    border: solid black;
+    background-color:pink; 
+}
 
 /*
 The `#menu` `<div>` is the parent `<div>` that contains the `.pure-menu` that
