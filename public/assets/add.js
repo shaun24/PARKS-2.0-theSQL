@@ -13,7 +13,9 @@ $(document).ready(function(){
         switch (api) {
           case "parks":
             $("#subheader").text(`${result.name} Added!`);
-            upload(result.id, images);
+            if (images){
+              upload(result.id, images);
+            };
             break;
           case "features":
             $("#subheader").text(`${api} Added!`);
@@ -96,7 +98,11 @@ $(document).ready(function(){
     form.forEach(function(item){
       data[item.name] = item.value;
     });
-    add(data, "parks", imgForm);
+    if (images.length === 0){
+      add(data, "parks");
+    } else {
+      add(data, "parks", imgForm);
+    };
     clearForm($("#new-park"));
   });
 
