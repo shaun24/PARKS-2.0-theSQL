@@ -9,6 +9,16 @@
 		{{!-- <script src="https://code.jquery.com/jquery.js"></script>		 --}}
 		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 		<script defer src="https://use.fontawesome.com/releases/v5.0.10/js/all.js" integrity="sha384-slN8GvtUJGnv6ca26v8EzVaR9DC58QEwsIk9q1QXdCU8Yu8ck/tL/5szYlBbqmS+" crossorigin="anonymous"></script>
+<<<<<<< HEAD
+=======
+
+		{{!-- JQuery --}}
+		<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+
+		{{!-- Javascript --}}
+		<script src="/assets/sign-in.js"></script>
+
+>>>>>>> bbe24327ce07f7e15c8c698597c3cae8694cbf42
 		{{!-- <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/grids-responsive-min.css"> --}}
 		<link rel="stylesheet" href="/assets/styles.css"  />
 		{{!--code below contains google maps api info--}}
@@ -33,7 +43,13 @@
 					<li class="pure-menu-item {{#if feat.selected}}pure-menu-selected{{/if}}"><a href="/all-features" class="pure-menu-link">Features</a></li>
 					<li class="pure-menu-item {{#if about.selected}}pure-menu-selected{{/if}}"><a href="/about" class="pure-menu-link">About</a></li>
 					{{!-- <li class="pure-menu-item menu-item-divided {{#if contact.selected}}pure-menu-selected{{/if}}"><a href="#" class="pure-menu-link">Contact</a></li> --}}
+<<<<<<< HEAD
 					<li class="pure-menu-item {{#if add.selected}}pure-menu-selected{{/if}}"><a href="/add-park" class="pure-menu-link">Add a Park </a></li>
+=======
+					<li class="pure-menu-item {{#if add-park.selected}}pure-menu-selected{{/if}}"><a href="/add-park" class="pure-menu-link">Add a Park </a></li>
+					<li class="pure-menu-item {{#if add-feature.selected}}pure-menu-selected{{/if}}"><a href="/add-feature" class="pure-menu-link">Add Park Features </a></li>
+					<li class="pure-menu-item" id = "sign-in"><a class="pure-menu-link">Sign in </a></li>
+>>>>>>> bbe24327ce07f7e15c8c698597c3cae8694cbf42
 				</ul>
 			
 			</div>
@@ -63,6 +79,43 @@
 		<script type="text/javascript"src="https://maps.googleapis.com/maps/api/js?key={{AIzaSyCLOMXJ-NKk4X28qsVQ1XjoaPsSW2HzMC}}"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 		
+<<<<<<< HEAD
 		
+=======
+		</div>
+
+		{{!--Modal--}}
+		<div id="sign-in-modal">
+			<div >
+			<header > 
+				<span onclick="document.getElementById('sign-in-modal').style.display='none'">
+					&times;
+				</span>
+				<div >
+					<h1> Sign into your account</h1>
+					<h2 id="subheader"></h2>
+				</div>
+			</header>
+			<div class="sign-in content">
+    <form class="pure-form pure-form-stacked" id="sign-in">
+        <fieldset class="pure-group">
+        
+            <input type="text" name="name" placeholder="Email here" class="pure-input-1"><br>
+
+            <input type="text" name="password" placeholder="Password" class="pure-input-1"><br>
+            
+        </fieldset>
+
+        <button type="submit"  class="pure-button pure-button-primary submit-btn" >Submit</button>
+        
+       
+    </form>
+</div>
+			<footer >
+				<p>Modal Footer</p>
+			</footer>
+			</div>
+		</div>
+>>>>>>> bbe24327ce07f7e15c8c698597c3cae8694cbf42
 	</body>
 </html>
