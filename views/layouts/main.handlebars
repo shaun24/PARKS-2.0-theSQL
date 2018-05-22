@@ -9,26 +9,20 @@
 		{{!-- <script src="https://code.jquery.com/jquery.js"></script>		 --}}
 		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 		<script defer src="https://use.fontawesome.com/releases/v5.0.10/js/all.js" integrity="sha384-slN8GvtUJGnv6ca26v8EzVaR9DC58QEwsIk9q1QXdCU8Yu8ck/tL/5szYlBbqmS+" crossorigin="anonymous"></script>
-
-		{{!-- JQuery --}}
-		<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-
 		{{!-- <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/grids-responsive-min.css"> --}}
-		<link rel="stylesheet" href="/assets/style.css"  />
+		<link rel="stylesheet" href="/assets/styles.css"  />
 		{{!--code below contains google maps api info--}}
 		
 	</head>
 	<body>
-		<div class="flex-container">
 	<div id="layout">
-		
+
 		<!-- Menu toggle -->
-	
 		<a href="#menu" id="menuLink" class="menu-link">
 			
 			<span></span>
 		</a>
-		
+
 		<div id="menu">
 			<div class="pure-menu">
 				<a class="pure-menu-heading" href="/">Parks App</a>
@@ -39,18 +33,17 @@
 					<li class="pure-menu-item {{#if feat.selected}}pure-menu-selected{{/if}}"><a href="/all-features" class="pure-menu-link">Features</a></li>
 					<li class="pure-menu-item {{#if about.selected}}pure-menu-selected{{/if}}"><a href="/about" class="pure-menu-link">About</a></li>
 					{{!-- <li class="pure-menu-item menu-item-divided {{#if contact.selected}}pure-menu-selected{{/if}}"><a href="#" class="pure-menu-link">Contact</a></li> --}}
-					<li class="pure-menu-item {{#if add-park.selected}}pure-menu-selected{{/if}}"><a href="/add-park" class="pure-menu-link">Add a Park </a></li>
-					<li class="pure-menu-item {{#if add-feature.selected}}pure-menu-selected{{/if}}"><a href="/add-feature" class="pure-menu-link">Add Park Features </a></li>
+					<li class="pure-menu-item {{#if add.selected}}pure-menu-selected{{/if}}"><a href="/add-park" class="pure-menu-link">Add a Park </a></li>
 				</ul>
 			
 			</div>
 		</div>
-	</div>
+
 	<div class="body">
 		{{{ body }}}
 	</div>
-		</div>
-	
+		
+
 	<footer>
     	<div class="social">
 			<i class="fab fa-facebook-square fa-3x"></i>
@@ -66,11 +59,10 @@
 		<script src="./assets/googlemaps.js"></script>
 		<script src="./assets/logic.js"></script>
 		<script src="./assets/ui.js"></script>
-		<script src="./assets/add.js"></script>
 		{{!--maybe this will work lol--}}
-		{{!-- <script type="text/javascript"src="https://maps.googleapis.com/maps/api/js?key={{AIzaSyCLOMXJ-NKk4X28qsVQ1XjoaPsSW2HzMC}}"></script> --}}
+		<script type="text/javascript"src="https://maps.googleapis.com/maps/api/js?key={{AIzaSyCLOMXJ-NKk4X28qsVQ1XjoaPsSW2HzMC}}"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 		
-		</div>
+		
 	</body>
 </html>
