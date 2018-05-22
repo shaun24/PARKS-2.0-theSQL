@@ -1,7 +1,7 @@
 $(document).ready(function(){
 
   // function to add new Parks/Features
-  function add(data, api){
+  function add(data, api, images){
     $.ajax({
       method: "POST",
       url: `/api/${api}`,
@@ -12,11 +12,29 @@ $(document).ready(function(){
       } else {
         if (api === "parks") {
           $("#subheader").text(`${result.name} Added!`);
+          upload(result.id, images);
         } else {
           $("#subheader").text(`${api} Added!`);
         };
       };
-    })
+    });
+  };
+
+  // function to send any park pictures to the assets/images/parks file location
+  function upload(id, images) {
+    $.ajax({
+      method: "POST",
+      url: "/api/upload",
+      processData: false,
+      contentType: false,
+      data: images
+    }).then(function(result){
+      if (result.errors) {
+        console.log(result.errors);
+      } else {
+        console.log(result);
+      }
+    });
   };
 
   // clears all the form values
@@ -47,12 +65,23 @@ $(document).ready(function(){
   // add Park button click
   $(document).on("submit", "#new-park", function(event) {
     event.preventDefault();
+
+    // get image data and append to a new form
+    var imgForm = new FormData();
+    var images = $("#img-file")[0].files;
+
+    images = Array.from(images);
+    images.forEach(function(image, idx){
+      imgForm.append("file-" + idx, image)
+    });
+
+    // create a data object to send to the parks table
     var form = $("#new-park").serializeArray();
     var data = {};
     form.forEach(function(item){
       data[item.name] = item.value;
     });
-    add(data, "parks");
+    add(data, "parks", imgForm);
     clearForm($("#new-park"));
   });
 
