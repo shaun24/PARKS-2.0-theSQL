@@ -1,5 +1,5 @@
 body {
-    background-color: floralwhite;
+    background: -webkit-linear-gradient(right slategrey, whitesmoke);
     position:relative;
    
     bottom: 3.5em;
@@ -25,10 +25,11 @@ body {
 
 
 #layout {
+    background: -webkit-linear-gradient (left, white, skyblue);
     position: relative;
     left: 0;
     padding-left: 0;
-}
+} 
     #layout.active #menu {
         left: 150px;
         width: 150px;
@@ -39,6 +40,7 @@ body {
     }
 
 .content {
+    background: -webkit-linear-gradient (left, white, skyblue);
     margin: 0 auto;
     padding: 0 2em;
     max-width: 800px;
@@ -49,11 +51,13 @@ body {
 .header {
     background-image: url("../../assets/images/parks/trees.png");
     background-position: center; 
+    opacity: .8;
     margin: 0;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    color: whitesmoke;
+    color: white;
     text-shadow:5px 5px 10px black;
      text-align: center;
+     
      padding: 2.5em 2em 0;
      border-bottom: 1px solid #eee;
      margin-top: 0.5em;
@@ -231,10 +235,11 @@ footer {
     background-image: url("../../assets/images/parks/trees.png");
     background-position: bottom;
     position: fixed;
+    opacity: .8;
     left: 0;
     bottom: 0;
     width: 100%;
-    height: 5.5em;    
+    height: 3em;    
     background-color: green;
     color: white;
     text-align: center; 
@@ -287,10 +292,11 @@ footer {
 } 
 
 #map {
-    box-shadow: 5px 5px 3px 1px #999;
+    
     height: 30em;
     border: 2px solid green;
     border-radius: 15px;
+    box-shadow: 5px 5px 3px 1px #999;
 }
 
 #map-check {
@@ -303,7 +309,8 @@ footer {
 
 #layout {
     
-    background-color: floralwhite;
+    background: -webkit-linear-gradient(left, white, skyblue);
+    opacity: 2;
 }
 
 /*            Icon Stlyes              */
