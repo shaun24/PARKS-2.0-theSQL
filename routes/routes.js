@@ -27,6 +27,7 @@ module.exports = function (app) {
         parks: dbPark,
         az: { selected: true }
       };
+      console.log(hbsObject);
 
       res.render("all-parks", hbsObject);
     });
