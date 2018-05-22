@@ -57,5 +57,16 @@ module.exports = function(app) {
       res.json(err);
     });
   });
+
+  // route to add park images to the database
+  app.post("/api/images", function (req, res) {
+    db.Image.bulkCreate(
+      req.body.urlObjArray
+    ).then(function(dbImage) {
+      res.json(dbImage);
+    }).catch(function(err) {
+      res.json(err);
+    });
+  });
   
 };
