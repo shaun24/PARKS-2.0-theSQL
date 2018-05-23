@@ -178,9 +178,9 @@ $(document).ready(function(){
   //           detailName.text(dbAvailDetails[j].name);
   //           $("#new-detail").append(detailName, detailList);
   //         }
-        }
-      })
-    });
-  });
+        // }
+      // })
+    // });
+  // });
 
 });

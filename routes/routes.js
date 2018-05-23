@@ -87,7 +87,15 @@ module.exports = function (app) {
         order: ["name"]
       }).then(function (dbFeature) {
         hbsObject.features = dbFeature;
-        res.render("add-feature", hbsObject);
+        
+        db.AvailDetail.findAll({
+          order: ["name"]
+        
+        }).then(function(dbDetail){
+          hbsObject.details = dbDetail;
+          
+          res.render("add-feature", hbsObject);
+        })
       });
 
     });
