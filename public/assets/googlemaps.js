@@ -5,15 +5,15 @@ function initMap() {
         zoom: 11
     });
 
-
-
-    let myCenter = map.center;
-    let marker = new google.maps.Marker({
-        position: myCenter,
+    var myCenter = map.center;
+    //console.log(myCenter);
+    var marker = new google.maps.Marker({
+        position:  { lat: 35.2271, lng: -80.8431 },
         map: map,
         animation: google.maps.Animation.BOUNCE
     });
-    //marker.setMap(map);
+
+    marker.setMap(map);
 
     let infoWindow2 = new google.maps.InfoWindow({
         content: `<h4> Charlotte, North Carolina </h4>`
@@ -41,11 +41,11 @@ function initMap() {
 
     }
 
-    // addMarker({        
-    //     coords: [35.227,-80.8373],
-    //     content: `First Ward Park`,
-    //     map: map
-    // });
+    addMarker({        
+        coords: [35.227,-80.8373],
+        content: `First Ward Park`,
+        map: map
+    });
 
 
    
@@ -64,7 +64,7 @@ function initMap() {
         
     ];
 
-    makeMarkers(markers);
+    //makeMarkers(markers);
 
     //loop through markers in mrkers array and 
     // for(let i = 0; i < markers.length; i++){
@@ -105,7 +105,6 @@ function initMap() {
 
 
 
-
 }
 
 function handleLocationError(browserHasGeolocation, infoWindow, pos) {
@@ -136,7 +135,7 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
 //get location  form
 var locationForm = document.getElementById('location-form');
 
-locationForm.addEventListener('submit', geocode)
+//locationForm.addEventListener('submit', geocode)
 
 
 function geocode(event, address){
