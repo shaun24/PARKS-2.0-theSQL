@@ -167,8 +167,8 @@ appears on the left side of the page.
     top: 0;
     left: 0; 
     
-    /* background: #000; rgb(5, 77, 5); */
-    /* background:rgba(0,0,0,0.7);rgb(5, 77, 5, 0.7); */
+    background: #000; rgb(5, 77, 5);
+    /* background: rgba(0,0,0,0.7); rgb (5, 77, 5, 0.7); */
     font-size: 10px; 
     z-index: 10;
     width: 2em;
@@ -239,8 +239,8 @@ footer {
     left: 0;
     bottom: 0;
     width: 100%;
-    height: 5em;    
-    background-color: slategray;
+    height: 4em;    
+    background-color: white;
     color: white;
     text-align: center; 
     font-size: 1em;   
@@ -276,18 +276,22 @@ footer {
 /* Form/Index Styles */
 /* =============================================================================== */
 .form-boxes {
+    border-style: insert;
     text-align: left;
     padding-left: 1em;
     background-color: slategray;
+    
 }   
 
 .form-boxes input {
     margin: .5em auto;
+    border-bottom: 2px solid black;
 }
 
 .submit-btn {
     margin: 1em auto;
     border-radius: 10px;
+    
 
 } 
 
@@ -393,11 +397,12 @@ footer {
         
     }
     .dog { 
-        background-image: url("./images/parks/dogpark.jpg");
-        background-position: left;
+        background-image: url("./images/parks/dogs.png");
+        background-position: right;
     }
     .golf { 
         background-image: url("./images/parks/golf.jpg");
+        background-position: bottom;
     }
     .wheelchair{ 
         background-image: url("./images/parks/wheelchair.jpg");
@@ -405,7 +410,7 @@ footer {
     }
     .play{ 
         background-image: url("./images/parks/playground.jpg");
-        background-position: right;
+        background-position: bottom;
     }
     .soccer{ background-image: url("./images/parks/soccer.png");}
     .tennis{ 
@@ -413,7 +418,7 @@ footer {
         background-position: center;
     }
     .trails{ 
-        background-image: url("./images/parks/trails.jpg");
+        background-image: url("./images/parks/trails.png");
         background-position: center;
     }
     .vending{ 
@@ -422,10 +427,10 @@ footer {
     }
     .views{  
         background-image: url("./images/parks/views.jpg");
-        background-position: center;
+        background-position: center, top;
     }
     .water{ 
-        background-image: url("./images/parks/water.jpg");
+        background-image: url("./images/parks/water.png");
         background-position: center;
     }
     .gym{ 

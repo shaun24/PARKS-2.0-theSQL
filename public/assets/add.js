@@ -116,7 +116,7 @@ $(document).ready(function(){
     form.forEach(function(item){
       if (item.name === "ParkId") {
         park = item.value;
-      } else if (feature.name != item.name) {
+      } else if (item.value == 1) {
         feature = {};
         feature.name = item.name;
         if (feature.name) {
