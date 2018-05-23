@@ -43,24 +43,24 @@
         
     };
 
-    navLink.onclick = function(e) {
-        var selected = 'pure-menu-selected';
-        if(!selected){
-            toggleClass(navLink, selected);
-        console.log("CLICK!!!!!!" + e);
-        console.log(navLink);
-        console.log(navLink.classList); 
-        } else{
-            return
-        }
+    // navLink.onclick = function(e) {
+    //     var selected = 'pure-menu-selected';
+    //     if(!selected){
+    //         toggleClass(navLink, selected);
+    //     console.log("CLICK!!!!!!" + e);
+    //     console.log(navLink);
+    //     console.log(navLink.classList); 
+    //     } else{
+    //         return
+    //     }
        
-    } 
+    // } 
     
-    content.onclick = function(e) {
-        if (menu.className.indexOf('active') !== -1) {
-            toggleAll(e);
-        }
-    };
+    // content.onclick = function(e) {
+    //     if (menu.className.indexOf('active') !== -1) {
+    //         toggleAll(e);
+    //     }
+    // };
 
     // active class toggle on menu link clicks
     // var el = document.querySelector('.nav');

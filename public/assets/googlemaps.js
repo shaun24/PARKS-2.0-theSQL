@@ -2,78 +2,44 @@
 function initMap() {
     const map = new google.maps.Map(document.getElementById("map"), {
         center: { lat: 35.2271, lng: -80.8431 },
-        zoom: 11
+        zoom: 12
     });
 
-    var myCenter = map.center;
-    //console.log(myCenter);
-    var marker = new google.maps.Marker({
-        position:  { lat: 35.2271, lng: -80.8431 },
-        map: map,
-        animation: google.maps.Animation.BOUNCE
-    });
-
-    marker.setMap(map);
-
-    let infoWindow2 = new google.maps.InfoWindow({
-        content: `<h4> Charlotte, North Carolina </h4>`
-    });
-    infoWindow2.open(map, marker);
-    let infoWindow = new google.maps.InfoWindow;
-
-    if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(function (position) {
-            var pos = {
-                lat: position.coords.latitude,
-                lng: position.coords.longitude
-            };
-
-            infoWindow.setPosition(pos);
-            infoWindow.setContent('Location found.');
-            infoWindow.open(map);
-            map.setCenter(pos);
-        }, function () {
-            handleLocationError(true, infoWindow, map.getCenter());
-        });
-    } else {
-        // Browser doesn't support Geolocation
-        handleLocationError(false, infoWindow, map.getCenter());
-
-    }
-
-    addMarker({        
-        coords: [35.227,-80.8373],
-        content: `First Ward Park`,
-        map: map
-    });
-
-
-   
+  
 
     
     // marker making functions
     //=======================================================
 
-    //array of markers -- array of objects
+    //array of markers
     const markers = [
         {
          coords:  [35.227,-80.8373],
-         content: `First Ward Park`,
-         map: map
+         content: `<h6>First Ward Park</h6>`,
+         //map: map
+        },
+        {
+        coords:  [35.2271, -80.8431],
+        content: `Charlotte, North Carolina`,
+        //map: map,
+        },
+        {
+        coords:  [35.1505, -80.7415],
+        content: `<h6>McAlpine Creek Park</h6>`,
+        //map: map,
         }
         
     ];
 
-    //makeMarkers(markers);
 
-    //loop through markers in mrkers array and 
-    // for(let i = 0; i < markers.length; i++){
-    //     addMarker(markers[i]);
-    // }
+    //call markerMaker Array
+    makeMarkers(markers);
+
 
 
     function makeMarkers(array){
         for(let i = 0; i < array.length; i++){
+            //add logic here to filter array based on features
             addMarker(array[i]);
         }
 
@@ -81,7 +47,6 @@ function initMap() {
 
     function addMarker(props) {
         let infoWindow3;
-        //alert(`add marker function`);
         let marker2 = new google.maps.Marker({
             position: new google.maps.LatLng(props.coords[0], props.coords[1]),
             map: map
@@ -97,33 +62,14 @@ function initMap() {
                 content: props.content
             });
         }
-        //marker2.setMap(map);
+      
         marker2.addListener('click', function(){
             infoWindow3.open(map, marker2);
         })
     }
 
 
-
-}
-
-function handleLocationError(browserHasGeolocation, infoWindow, pos) {
-    infoWindow.setPosition(pos);
-    infoWindow.setContent(browserHasGeolocation ?
-        'Error: The Geolocation service failed.' :
-        'Error: Your browser doesn\'t support geolocation.');
-    infoWindow.open(map);
-}
-
-
-
-
-// addMarker({
-//     coords: {lat: x, lng: x},
-//     iconImage: '',
-//     content: ''
-// });
-
+} // end of init map
 
 
             
