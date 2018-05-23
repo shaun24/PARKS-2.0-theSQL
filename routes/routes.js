@@ -233,40 +233,7 @@ module.exports = function (app) {
   // API Post
   //======================================================= 
 
-  app.post("/api/parks", function (req, res) {
-    if (req.body.restrooms === "") {
-      req.body.restrooms = 0;
-    };
-    if (req.body.size === "") {
-      req.body.size = null;
-    };
-    db.Park.create(
-      req.body
-    ).then(function (dbPark) {
-      res.json(dbPark);
-    }).catch(function (err) {
-      res.json(err);
-    });
-  });
-
-  app.post("/api/features", function (req, res) {
-    db.Feature.bulkCreate(
-      req.body.array
-    ).then(function (dbFeature) {
-      res.json(dbFeature);
-    }).catch(function (err) {
-      res.json(err);
-    });
-    // db.Feature.create(
-    //   req.body
-    // ).then(function (dbFeature) {
-    //   res.json(dbFeature);
-    // }).catch(function (err){
-    //   res.json(err);
-    // });
-  });
-
-  //sign-in
+//sign-in
 
   app.get("/sign-in", function (req, res) {
     db.User.findAll({}).then(function (dbUser) {
