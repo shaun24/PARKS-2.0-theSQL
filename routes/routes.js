@@ -85,7 +85,7 @@ module.exports = function (app) {
 
       db.AvailFeature.findAll({
         order: ["name"]
-      }).then(function(dbFeature) {
+      }).then(function (dbFeature) {
         hbsObject.features = dbFeature;
         res.render("add-feature", hbsObject);
       });
@@ -94,6 +94,21 @@ module.exports = function (app) {
 
   });
 
+  app.get("/add-detail", function (req, res) {
+    db.Park.findAll({
+      order: ["name"]
+
+    }).then(function (dbPark) {
+      var hbsObject = {
+        parks: dbPark,
+        az: { selected: true }
+      };
+        res.render("add-detail", hbsObject);
+      });
+
+    });
+
+    
   //Individual Feature Page
   //=====================================================
   app.get("/features/:feature", function (req, res) {
@@ -187,6 +202,34 @@ module.exports = function (app) {
   });
 
 
+
+
+  //GET all features for one park
+  //=======================================================
+
+  app.get("/api/park/features/:id", function (req, res) {
+    db.Feature.findAll({
+      where: {
+        ParkId: req.params.id
+      }
+    }).then(function (dbFeature) {
+      res.json(dbFeature);
+    }).catch(function(err){
+      res.json(err);
+    })
+  });
+
+  app.get("/api/availdetails", function (req, res){
+    db.AvailDetail.findAll({
+    }).then(function(dbAvailDetails){
+      res.json(dbAvailDetails);
+    }).catch(function(err){
+      res.json(err);
+    })
+  })
+
+
+
   // API Post
   //======================================================= 
 
@@ -201,7 +244,7 @@ module.exports = function (app) {
       req.body
     ).then(function (dbPark) {
       res.json(dbPark);
-    }).catch(function (err){
+    }).catch(function (err) {
       res.json(err);
     });
   });
@@ -209,9 +252,9 @@ module.exports = function (app) {
   app.post("/api/features", function (req, res) {
     db.Feature.bulkCreate(
       req.body.array
-    ).then(function(dbFeature) {
+    ).then(function (dbFeature) {
       res.json(dbFeature);
-    }).catch(function(err) {
+    }).catch(function (err) {
       res.json(err);
     });
     // db.Feature.create(
@@ -223,16 +266,16 @@ module.exports = function (app) {
     // });
   });
 
-//sign-in
+  //sign-in
 
-app.get("/sign-in", function (req, res) {
-  db.User.findAll({}).then(function (dbUser) {
-    var hbsObject = {
-      users: dbUser,
-      add: { selected: true }
-    };
+  app.get("/sign-in", function (req, res) {
+    db.User.findAll({}).then(function (dbUser) {
+      var hbsObject = {
+        users: dbUser,
+        add: { selected: true }
+      };
 
-    res.render("sign-in", hbsObject);
+      res.render("sign-in", hbsObject);
+    });
   });
-});
 };
