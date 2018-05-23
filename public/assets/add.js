@@ -1,7 +1,7 @@
 $(document).ready(function(){
 
   // function to add new Parks/Features
-  function add(data, api){
+  function add(data, api, images){
     $.ajax({
       method: "POST",
       url: `/api/${api}`,
@@ -10,13 +10,48 @@ $(document).ready(function(){
       if (result.errors) {
         $("#subheader").text(`${result.errors[0].message}!`);
       } else {
-        if (api === "parks") {
-          $("#subheader").text(`${result.name} Added!`);
-        } else {
-          $("#subheader").text(`${api} Added!`);
+        switch (api) {
+          case "parks":
+            $("#subheader").text(`${result.name} Added!`);
+            if (images){
+              upload(result.id, images);
+            };
+            break;
+          case "features":
+            $("#subheader").text(`${api} Added!`);
+            break;
+          case "images":
+            console.log("Image(s) added.");
+            break;
+          default:
+            console.log(result);
         };
       };
-    })
+    });
+  };
+
+  // function to send any park pictures to the assets/images/parks file location
+  function upload(id, images) {
+    $.ajax({
+      method: "POST",
+      url: "/api/upload",
+      processData: false,
+      contentType: false,
+      data: images
+    }).then(function(result){
+      if (result.errors) {
+        console.log(result.errors);
+      } else {
+        var urlObjArray = [];
+        result.forEach(function(item){
+          urlObjArray.push({
+            url: item,
+            ParkId: id
+          });
+        });
+        add({urlObjArray}, "images");
+      };
+    });
   };
 
   // clears all the form values
@@ -28,7 +63,7 @@ $(document).ready(function(){
       var tag = this.tagName.toLowerCase(); // normalize case
       // it's ok to reset the value attr of text inputs,
       // password inputs, and textareas
-      if (type == 'text' || type == 'password' || tag == 'textarea') {
+      if (type == 'text' || type == 'password' || tag == 'textarea' || type == 'file') {
         this.value = "";
       }
       // checkboxes and radios need to have their checked state cleared
@@ -36,7 +71,7 @@ $(document).ready(function(){
       else if (type == 'checkbox' || type == 'radio') {
         this.checked = false;
       }
-      // select elements need to have their 'selectedIndex' property set to -1
+      // select elements need to have their 'selectedIndex' property set to 0
       // (this works for both single and multiple select elements)
       else if (tag == 'select') {
         this.selectedIndex = 0;
@@ -47,12 +82,27 @@ $(document).ready(function(){
   // add Park button click
   $(document).on("submit", "#new-park", function(event) {
     event.preventDefault();
+
+    // get image data and append to a new form
+    var imgForm = new FormData();
+    var images = $("#img-file")[0].files;
+
+    images = Array.from(images);
+    images.forEach(function(image, idx){
+      imgForm.append("file-" + idx, image)
+    });
+
+    // create a data object to send to the parks table
     var form = $("#new-park").serializeArray();
     var data = {};
     form.forEach(function(item){
       data[item.name] = item.value;
     });
-    add(data, "parks");
+    if (images.length === 0){
+      add(data, "parks");
+    } else {
+      add(data, "parks", imgForm);
+    };
     clearForm($("#new-park"));
   });
 
