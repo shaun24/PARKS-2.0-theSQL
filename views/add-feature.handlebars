@@ -33,11 +33,13 @@
                     <input type="checkbox" name={{name}} value="lighted"> Lighted after dark
                     <input type="checkbox" name={{name}} value="indoor"> Indoors
                     <input type="checkbox" name={{name}} value="covered"> Covered <br><br>
-                    {{#each details}}
-                        {{#if name}}
-                        <input type="number"> {{name}}
-                        {{/if}}
-                    {{/each}}
+                    {{!-- <h1>{{dataValues.id}}</h1>                    {{!-- <h2>{{../details[0].dataValues.AvailFeatureId}}</h2> --}}
+                        
+                        {{#each ../details}}
+                            {{#if (eq ../dataValues.id dataValues.AvailFeatureId)}}
+                                <input type="number" placeholder='{{dataValues.name}}'>
+                            {{/if}}
+                        {{/each}}
                 </fieldset>
                 {{/each}}
             </div>
