@@ -2,7 +2,8 @@
 function initMap() {
     const map = new google.maps.Map(document.getElementById("map"), {
         center: { lat: 35.2271, lng: -80.8431 },
-        zoom: 12
+        rotateControl: true,
+        zoom: 11
     });
 
   
@@ -16,17 +17,18 @@ function initMap() {
         {
          coords:  [35.227,-80.8373],
          content: `<h6>First Ward Park</h6>`,
-         //map: map
         },
         {
         coords:  [35.2271, -80.8431],
-        content: `Charlotte, North Carolina`,
-        //map: map,
+        content: `<h6>Charlotte, North Carolina</h6>`,
         },
         {
         coords:  [35.1505, -80.7415],
         content: `<h6>McAlpine Creek Park</h6>`,
-        //map: map,
+        },
+        {
+        coords:  [35.1945, -80.8420],
+        content: `<h6>Freedom Park</h6>`,
         }
         
     ];
@@ -49,7 +51,8 @@ function initMap() {
         let infoWindow3;
         let marker2 = new google.maps.Marker({
             position: new google.maps.LatLng(props.coords[0], props.coords[1]),
-            map: map
+            map: map,
+
         });
         //check for custom icon
         if(props.iconImage){
@@ -65,6 +68,12 @@ function initMap() {
       
         marker2.addListener('click', function(){
             infoWindow3.open(map, marker2);
+            map.setZoom(14);
+            map.setCenter(marker2.getPosition());
+        });
+        infoWindow3.addListener('closeclick', function(){
+            map.setZoom(11);
+            map.setCenter({ lat: 35.2271, lng: -80.8431 });
         })
     }
 
@@ -79,12 +88,13 @@ function initMap() {
 //geocode();
 
 //get location  form
-var locationForm = document.getElementById('location-form');
+var locationForm = document.getElementById('pin-form');
 
 //locationForm.addEventListener('submit', geocode)
 
 
 function geocode(event, address){
+    //change this to checkbox value to find address based on activity selected
     let address = document.getElementById('input-id').value;
     event.pereventDefault();
 
