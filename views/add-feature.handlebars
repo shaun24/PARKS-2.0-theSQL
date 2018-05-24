@@ -33,6 +33,11 @@
                     <input type="checkbox" name={{name}} value="lighted"> Lighted after dark
                     <input type="checkbox" name={{name}} value="indoor"> Indoors
                     <input type="checkbox" name={{name}} value="covered"> Covered <br><br>
+                    {{#each details}}
+                        {{#if name}}
+                        <input type="number"> {{name}}
+                        {{/if}}
+                    {{/each}}
                 </fieldset>
                 {{/each}}
             </div>
