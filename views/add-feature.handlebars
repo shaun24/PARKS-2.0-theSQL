@@ -29,15 +29,15 @@
             <div class="pure-control-group pure-u-1-2">
                 {{#each features}}
                 <fieldset>
-                    <input type="checkbox" name={{name}} value="1"> {{name}} <br>
-                    <input type="checkbox" name={{name}} value="lighted"> Lighted after dark
-                    <input type="checkbox" name={{name}} value="indoor"> Indoors
-                    <input type="checkbox" name={{name}} value="covered"> Covered <br><br>
+                    <input type="checkbox" name='{{name}}' value="1"> {{name}} <br>
+                    <input type="checkbox" name='{{name}}' value="lighted"> Lighted after dark
+                    <input type="checkbox" name='{{name}}' value="indoor"> Indoors
+                    <input type="checkbox" name='{{name}}' value="covered"> Covered <br><br>
                     {{!-- <h1>{{dataValues.id}}</h1>                    {{!-- <h2>{{../details[0].dataValues.AvailFeatureId}}</h2> --}}
                         
                         {{#each ../details}}
                             {{#if (eq ../dataValues.id dataValues.AvailFeatureId)}}
-                                <input type="number" placeholder='{{dataValues.name}}'>
+                                <input type="number" name='{{dataValues.name}}' placeholder='{{dataValues.name}}'>
                             {{/if}}
                         {{/each}}
                 </fieldset>

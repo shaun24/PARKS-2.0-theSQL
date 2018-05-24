@@ -1,7 +1,7 @@
 $(document).ready(function(){
 
   // function to add new Parks/Features
-  function add(data, api, images){
+  function add(data, api, images, details){
     $.ajax({
       method: "POST",
       url: `/api/${api}`,
@@ -13,12 +13,15 @@ $(document).ready(function(){
         switch (api) {
           case "parks":
             $("#subheader").text(`${result.name} Added!`);
-            if (images){
+            if (images) {
               upload(result.id, images);
             };
             break;
           case "features":
             $("#subheader").text(`${api} Added!`);
+            if (details) {
+              addDetails(result, details);
+            }
             break;
           case "images":
             console.log("Image(s) added.");
@@ -54,6 +57,18 @@ $(document).ready(function(){
     });
   };
 
+  // function to add details to the database
+  function addDetails(features, details) {
+    details.forEach(function(det, idx) {
+      features.forEach(function(feat) {
+        if (feat.name === det.feature) {
+          details[idx].FeatureId = feat.id;
+        };
+      });
+    });
+    console.log(details);
+  };
+
   // clears all the form values
   function clearForm(form) {
     // iterate over all of the inputs for the form
@@ -63,7 +78,7 @@ $(document).ready(function(){
       var tag = this.tagName.toLowerCase(); // normalize case
       // it's ok to reset the value attr of text inputs,
       // password inputs, and textareas
-      if (type == 'text' || type == 'password' || tag == 'textarea' || type == 'file') {
+      if (type == 'text' || type == 'password' || tag == 'textarea' || type == 'file' || type == 'number') {
         this.value = "";
       }
       // checkboxes and radios need to have their checked state cleared
@@ -109,11 +124,31 @@ $(document).ready(function(){
   // add Feature button click
   $(document).on("submit", "#new-feature", function(event) {
     event.preventDefault();
-    var form = $("#new-feature").serializeArray();
     var feature = {};
     var park;
     var array = [];
-    form.forEach(function(item){
+    var featArray = [];
+    var detArray = [];
+    var featureName = "";
+    $(":input", $("#new-feature")).each(function(item) {
+      var type = this.type;
+      if (type === "checkbox" && this.checked || type === "select-one") {
+        featArray.push({
+          name: this.name,
+          value: this.value
+        });
+        if (this.value == 1) {
+          featureName = this.name;
+        }
+      } else if (type === "number" && this.value != "") {
+        detArray.push({
+          name: this.name,
+          value: this.value,
+          feature: featureName
+        });
+      };
+    });
+    featArray.forEach(function(item){
       if (item.name === "ParkId") {
         park = item.value;
       } else if (item.value == 1) {
@@ -127,7 +162,7 @@ $(document).ready(function(){
       };
       feature.ParkId = park;
     });
-    add({array}, "features");
+    add({array}, "features", false, detArray);
     clearForm($("#new-feature"));
   });
 
