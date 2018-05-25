@@ -1,5 +1,11 @@
+* {
+    box-sizing: border-box;
+}
+
 body {
-    background: -webkit-linear-gradient(left, white, skyblue);
+    
+    background-image: url("../../assets/images/parks/trees.png");
+    background-image: no-repeat, center;
     position:relative;
    
     bottom: 3.5em;
@@ -25,7 +31,8 @@ body {
 
 
 #layout {
-    background: -webkit-linear-gradient ( white, skyblue);
+    background-image: url("../../assets/images/parks/trees.png");
+    background-image: no-repeat, center;
     position: relative;
     left: 0;
     padding-left: 0;
@@ -40,7 +47,8 @@ body {
     }
 
 .content {
-    background: -webkit-linear-gradient ( white, skyblue);
+    background-image: url("../../assets/images/parks/trees.png");
+    background-position: center;
     margin: 0 auto;
     padding: 0 2em;
     max-width: 800px;
@@ -49,37 +57,41 @@ body {
 }
 
 .header {
+    
     background-image: url("../../assets/images/parks/trees.png");
-    background-position: center; 
-    opacity: .8;
+    background-image: no-repeat, center;
+    
     margin: 0;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     color: white;
+    
     text-shadow:5px 5px 10px black;
      text-align: center;
+     position: -webkit-sticky;
+     position: sticky;
      
      padding: 2.5em 2em 0;
      border-bottom: 1px outset #eee;
      margin-top: 0.5em;
      
  }
-    .header h1 {
-        margin: 0.2em 0;
-        font-size: 3em;
-        font-weight: 300;
-    }
-     .header h2 {
-        font-weight: 300;
-        padding: 0;
-        margin-top: 0;
-    }
+
+    /* .header h1 { */
+        /* margin: 0.2em 0; */
+        /* font-size: 3em; */
+        /* font-weight: 300; */
+    /* } */
+     /* .header h2 { */
+        /* font-weight: 300; */
+        /* padding: 0; */
+        /* margin-top: 0; */
+    /* } */
 
 .content-subhead {
     margin: 50px 0 20px 0;
     font-weight: 300;
     color: #888;
 }
-
 
 
 /*
@@ -235,7 +247,6 @@ footer {
     background-image: url("../../assets/images/parks/trees.png");
     background-position: bottom;
     position: fixed;
-    opacity: .8;
     left: 0;
     bottom: 0;
     width: 100%;
@@ -300,7 +311,7 @@ footer {
     height: 30em;
     border: 2px solid slategrey;
     border-radius: 15px;
-    box-shadow: 5px 5px 3px 1px #999;
+    box-shadow: 5px 5px 3px 1px darkgrey;
 }
 
 #map-check {
@@ -308,14 +319,14 @@ footer {
 }
 
 .no {
-    border: none;
+    border: solid;
 }
 
-#layout {
+/* #layout { */
     
-    background: -webkit-linear-gradient(left, white, skyblue);
-    opacity: 2;
-}
+    /* background: black; */
+    
+/* } */
 
 /*            Icon Stlyes              */
 /* =============================================================================== */

@@ -7,7 +7,7 @@
         menuLink = document.getElementById('menuLink'),
         navLink = document.getElementById('L1'),
         content  = document.getElementById('main');
-   
+       
 
     function toggleClass(element, className) {
         var classes = element.className.split(/\s+/),
