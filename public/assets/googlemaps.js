@@ -13,10 +13,15 @@ function initMap() {
     //=======================================================
 
     //array of markers
+    const bballParks = [{
+        coords:  [35.1945, -80.8420],
+        content: `<h6>Freedom Park</h6>`,
+        }];
+
     const markers = [
         {
          coords:  [35.227,-80.8373],
-         content: `<h6>First Ward Park</h6>`,
+         content: `<h6><a href="/">First Ward Park</a></h6>`,
         },
         {
         coords:  [35.2271, -80.8431],
@@ -34,8 +39,15 @@ function initMap() {
     ];
 
 
+   
+    var basketballBox = document.getElementById("basketball");
+    basketballBox.addEventListener('click', function(){
+        makeMarkers(bballParks);
+        console.log(`console log`)
+    });
+
     //call markerMaker Array
-    makeMarkers(markers);
+    //makeMarkers(markers);
 
 
 
@@ -51,7 +63,8 @@ function initMap() {
         let infoWindow3;
         let marker2 = new google.maps.Marker({
             position: new google.maps.LatLng(props.coords[0], props.coords[1]),
-            map: map,
+            animation: google.maps.Animation.DROP,
+            map: map
 
         });
         //check for custom icon
