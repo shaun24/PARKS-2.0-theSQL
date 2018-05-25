@@ -1,7 +1,7 @@
 $(document).ready(function(){
 
   // function to add new Parks/Features
-  function add(data, api, images){
+  function add(data, api, images, details){
     $.ajax({
       method: "POST",
       url: `/api/${api}`,
@@ -13,15 +13,21 @@ $(document).ready(function(){
         switch (api) {
           case "parks":
             $("#subheader").text(`${result.name} Added!`);
-            if (images){
+            if (images) {
               upload(result.id, images);
             };
             break;
           case "features":
             $("#subheader").text(`${api} Added!`);
+            if (details) {
+              addDetails(result, details);
+            }
             break;
           case "images":
             console.log("Image(s) added.");
+            break;
+          case "details":
+            console.log("Details added.");
             break;
           default:
             console.log(result);
@@ -54,6 +60,26 @@ $(document).ready(function(){
     });
   };
 
+  // function to add details to the database
+  function addDetails(features, details) {
+    details.forEach(function(det, idx) {
+      features.forEach(function(feat) {
+        if (feat.name === det.feature) {
+          details[idx].FeatureId = feat.id;
+        };
+      });
+    });
+    var detObjArray = [];
+    details.forEach(function(item){
+      detObjArray.push({
+        name: item.name,
+        quantity: item.value,
+        FeatureId: item.FeatureId
+      });
+    });
+    add({detObjArray}, "details");
+  };
+
   // clears all the form values
   function clearForm(form) {
     // iterate over all of the inputs for the form
@@ -63,7 +89,7 @@ $(document).ready(function(){
       var tag = this.tagName.toLowerCase(); // normalize case
       // it's ok to reset the value attr of text inputs,
       // password inputs, and textareas
-      if (type == 'text' || type == 'password' || tag == 'textarea' || type == 'file') {
+      if (type == 'text' || type == 'password' || tag == 'textarea' || type == 'file' || type == 'number') {
         this.value = "";
       }
       // checkboxes and radios need to have their checked state cleared
@@ -109,14 +135,34 @@ $(document).ready(function(){
   // add Feature button click
   $(document).on("submit", "#new-feature", function(event) {
     event.preventDefault();
-    var form = $("#new-feature").serializeArray();
     var feature = {};
     var park;
     var array = [];
-    form.forEach(function(item){
+    var featArray = [];
+    var detArray = [];
+    var featureName = "";
+    $(":input", $("#new-feature")).each(function(item) {
+      var type = this.type;
+      if (type === "checkbox" && this.checked || type === "select-one") {
+        featArray.push({
+          name: this.name,
+          value: this.value
+        });
+        if (this.value == 1) {
+          featureName = this.name;
+        }
+      } else if (type === "number" && this.value != "") {
+        detArray.push({
+          name: this.name,
+          value: this.value,
+          feature: featureName
+        });
+      };
+    });
+    featArray.forEach(function(item){
       if (item.name === "ParkId") {
         park = item.value;
-      } else if (feature.name != item.name) {
+      } else if (item.value == 1) {
         feature = {};
         feature.name = item.name;
         if (feature.name) {
@@ -127,7 +173,7 @@ $(document).ready(function(){
       };
       feature.ParkId = park;
     });
-    add({array}, "features");
+    add({array}, "features", false, detArray);
     clearForm($("#new-feature"));
   });
 
@@ -142,4 +188,45 @@ $(document).ready(function(){
       $("#subheader").text("Add new features to a park we may have missed to our database");
     };
   });
+
+
+  // $(document).on("click", "#select-park", function() {
+  //   id = $("#park-id");
+  //   id = id[0].value;
+  //   console.log(id);
+  //   $.ajax({
+  //     method: "GET",
+  //     url: `/api/park/features/${id}`
+  //   }).then(function(dbFeatures){
+  //     console.log(dbFeatures);
+
+  //     $.ajax({
+  //       method: "GET",
+  //     url: `/api/availdetails`
+  //     }).then(function(dbAvailDetails){
+  //       console.log(dbAvailDetails);
+  //       var f;
+  //       var d;
+  //       var detailList;
+  //       var detailName;
+
+  //       for (var i = 0; i< dbFeatures.length; i++){
+  //         f = $("<fieldset>");
+  //         f.addClass("pure-group");
+  //         d = $("<div>");
+  //         d.text(dbAvailDetails[i].name);
+  //         d.attr("value", dbFeatures[i].id);
+  //         $("#new-detail").append(f, d);
+  //         for (var j = 0; j < dbAvailDetails.length; j++){
+  //           detailList = $("<input>");
+  //           detailList.attr("type", "number");
+  //           detailName = $("<p>");
+  //           detailName.text(dbAvailDetails[j].name);
+  //           $("#new-detail").append(detailName, detailList);
+  //         }
+        // }
+      // })
+    // });
+  // });
+
 });

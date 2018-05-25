@@ -1,6 +1,6 @@
 <div class="header">
     <h1>Charlotte Parks</h1>
-    <h2>Use your device location or pick an activity to get started!</h2>
+    <h2>Pick an activity to get started!</h2>
 </div>
 <br> {{!Incorporate google maps code, starts with the floating-pannel. tried a few different methods and a few different variations,
 didn't work }}
@@ -11,16 +11,14 @@ didn't work }}
         <input id="address" type="textbox" value="Sydney, NSW">
         <input id="submit" type="button" value="Geocode">
     </div> --}}
-    <div id="map"> </div>
- 
+    <div id="map"> </div> 
     
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCLOMXJ-NKk4X28qsVQ1XjoaPsSW2HzMCs&callback=initMap">
     </script>  
+    
     <br>
     <div class="pure-g no">
-        <button class="pure-button pure-button-primary submit-btn">
-            <i class="material-icons">location_on</i> Parks near me
-        </button>
+       
     </div>
 
     <br>
@@ -29,8 +27,8 @@ didn't work }}
         {{!--
         <radio value="" disabled selected>Select a Feature</radio> --}}
         <div class="pure-control-group pure-u-1-2">
-            <input type="checkbox">Basketball
-            <label class="container" onclick="ToggleBball()" value="basketball" id="basketball">
+            <input type="checkbox" id="basketball">Basketball
+            <label class="container" onclick="ToggleBball()" value="basketball">
                 <span class="checkmark"></span>
             </label>
             {{!--

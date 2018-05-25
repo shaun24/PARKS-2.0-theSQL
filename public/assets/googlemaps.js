@@ -2,78 +2,58 @@
 function initMap() {
     const map = new google.maps.Map(document.getElementById("map"), {
         center: { lat: 35.2271, lng: -80.8431 },
+        rotateControl: true,
         zoom: 11
     });
 
-
-
-    let myCenter = map.center;
-    let marker = new google.maps.Marker({
-        position: myCenter,
-        map: map,
-        animation: google.maps.Animation.BOUNCE
-    });
-    //marker.setMap(map);
-
-    let infoWindow2 = new google.maps.InfoWindow({
-        content: `<h4> Charlotte, North Carolina </h4>`
-    });
-    infoWindow2.open(map, marker);
-    let infoWindow = new google.maps.InfoWindow;
-
-    if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(function (position) {
-            var pos = {
-                lat: position.coords.latitude,
-                lng: position.coords.longitude
-            };
-
-            infoWindow.setPosition(pos);
-            infoWindow.setContent('Location found.');
-            infoWindow.open(map);
-            map.setCenter(pos);
-        }, function () {
-            handleLocationError(true, infoWindow, map.getCenter());
-        });
-    } else {
-        // Browser doesn't support Geolocation
-        handleLocationError(false, infoWindow, map.getCenter());
-
-    }
-
-    // addMarker({        
-    //     coords: [35.227,-80.8373],
-    //     content: `First Ward Park`,
-    //     map: map
-    // });
-
-
-   
+  
 
     
     // marker making functions
     //=======================================================
 
-    //array of markers -- array of objects
+    //array of markers
+    const bballParks = [{
+        coords:  [35.1945, -80.8420],
+        content: `<h6>Freedom Park</h6>`,
+        }];
+
     const markers = [
         {
          coords:  [35.227,-80.8373],
-         content: `First Ward Park`,
-         map: map
+         content: `<h6><a href="/">First Ward Park</a></h6>`,
+        },
+        {
+        coords:  [35.2271, -80.8431],
+        content: `<h6>Charlotte, North Carolina</h6>`,
+        },
+        {
+        coords:  [35.1505, -80.7415],
+        content: `<h6>McAlpine Creek Park</h6>`,
+        },
+        {
+        coords:  [35.1945, -80.8420],
+        content: `<h6>Freedom Park</h6>`,
         }
         
     ];
 
-    makeMarkers(markers);
 
-    //loop through markers in mrkers array and 
-    // for(let i = 0; i < markers.length; i++){
-    //     addMarker(markers[i]);
-    // }
+   
+    var basketballBox = document.getElementById("basketball");
+    basketballBox.addEventListener('click', function(){
+        makeMarkers(bballParks);
+        console.log(`console log`)
+    });
+
+    //call markerMaker Array
+    //makeMarkers(markers);
+
 
 
     function makeMarkers(array){
         for(let i = 0; i < array.length; i++){
+            //add logic here to filter array based on features
             addMarker(array[i]);
         }
 
@@ -81,10 +61,11 @@ function initMap() {
 
     function addMarker(props) {
         let infoWindow3;
-        //alert(`add marker function`);
         let marker2 = new google.maps.Marker({
             position: new google.maps.LatLng(props.coords[0], props.coords[1]),
+            animation: google.maps.Animation.DROP,
             map: map
+
         });
         //check for custom icon
         if(props.iconImage){
@@ -97,34 +78,20 @@ function initMap() {
                 content: props.content
             });
         }
-        //marker2.setMap(map);
+      
         marker2.addListener('click', function(){
             infoWindow3.open(map, marker2);
+            map.setZoom(14);
+            map.setCenter(marker2.getPosition());
+        });
+        infoWindow3.addListener('closeclick', function(){
+            map.setZoom(11);
+            map.setCenter({ lat: 35.2271, lng: -80.8431 });
         })
     }
 
 
-
-
-}
-
-function handleLocationError(browserHasGeolocation, infoWindow, pos) {
-    infoWindow.setPosition(pos);
-    infoWindow.setContent(browserHasGeolocation ?
-        'Error: The Geolocation service failed.' :
-        'Error: Your browser doesn\'t support geolocation.');
-    infoWindow.open(map);
-}
-
-
-
-
-// addMarker({
-//     coords: {lat: x, lng: x},
-//     iconImage: '',
-//     content: ''
-// });
-
+} // end of init map
 
 
             
@@ -134,12 +101,13 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
 //geocode();
 
 //get location  form
-var locationForm = document.getElementById('location-form');
+var locationForm = document.getElementById('pin-form');
 
-locationForm.addEventListener('submit', geocode)
+//locationForm.addEventListener('submit', geocode)
 
 
 function geocode(event, address){
+    //change this to checkbox value to find address based on activity selected
     let address = document.getElementById('input-id').value;
     event.pereventDefault();
 

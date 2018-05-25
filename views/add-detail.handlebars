@@ -1,0 +1,35 @@
+<div class="header">
+    <h1> Add details to a feature in a Park</h1>
+    <h2 id="subheader">Add new deatils to a park feature we may have missed to our database</h2>
+</div>
+<div class="add-detail content">
+    <fieldset class="pure-group">
+
+        <select id="park-id" name="ParkId" class="pure-input-1">
+            <option disabled selected value="">Pick a Park to add a feature to</option>
+            {{#each parks}}
+            <option value={{id}}>{{name}}</option>
+            {{/each}}
+        </select>
+        <br>
+        <button type="button" id="select-park" class="pure-button pure-button-primary submit-btn">Select</button>
+
+    </fieldset>
+
+    
+
+
+
+    <form class="pure-form pure-form-stacked" id="new-detail">
+
+        <fieldset class="pure-group">
+            <div id="detail-addition">
+                
+
+            </div>
+        </fieldset>
+
+        <button type="submit" value=1 class="pure-button pure-button-primary submit-btn" >Submit</button>
+    </form>
+
+</div>
