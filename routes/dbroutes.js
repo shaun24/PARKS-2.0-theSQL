@@ -47,6 +47,17 @@ module.exports = function(app) {
     });
   });
 
+  // route to add park images to the database
+  app.post("/api/images", function (req, res) {
+    db.Image.bulkCreate(
+      req.body.urlObjArray
+    ).then(function(dbImage) {
+      res.json(dbImage);
+    }).catch(function(err) {
+      res.json(err);
+    });
+  });
+
   // route to add park features to the database
   app.post("/api/features", function (req, res) {
     db.Feature.bulkCreate(
@@ -58,12 +69,12 @@ module.exports = function(app) {
     });
   });
 
-  // route to add park images to the database
-  app.post("/api/images", function (req, res) {
-    db.Image.bulkCreate(
-      req.body.urlObjArray
-    ).then(function(dbImage) {
-      res.json(dbImage);
+  // route to add details to the database
+  app.post("/api/details", function (req, res) {
+    db.Detail.bulkCreate(
+      req.body.detObjArray
+    ).then(function(dbDetail) {
+      res.json(dbDetail);
     }).catch(function(err) {
       res.json(err);
     });

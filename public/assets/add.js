@@ -26,6 +26,9 @@ $(document).ready(function(){
           case "images":
             console.log("Image(s) added.");
             break;
+          case "details":
+            console.log("Details added.");
+            break;
           default:
             console.log(result);
         };
@@ -66,7 +69,15 @@ $(document).ready(function(){
         };
       });
     });
-    console.log(details);
+    var detObjArray = [];
+    details.forEach(function(item){
+      detObjArray.push({
+        name: item.name,
+        quantity: item.value,
+        FeatureId: item.FeatureId
+      });
+    });
+    add({detObjArray}, "details");
   };
 
   // clears all the form values
