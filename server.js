@@ -15,11 +15,25 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(express.static(process.cwd() + '/public'));
 
+
+var hbs = exphbs.create({
+  // Specify helpers which are only registered on this instance.
+  helpers: {
+      eq: function (a, b) { return a == b; },
+    
+  },
+  defaultLayout: "main"
+});
 // app.use(express.static(process.cwd() + '/features'));
 // Set Handlebars.
-app.engine("handlebars", exphbs({ defaultLayout: "main" }));
+app.engine("handlebars", hbs.engine);
 app.set("view engine", "handlebars");
 // Serve static content for the app from the "public" directory in the application directory.
+
+
+
+
+
 
 
 

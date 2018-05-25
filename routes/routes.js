@@ -81,19 +81,23 @@ module.exports = function (app) {
       var hbsObject = {
         parks: dbPark,
         az: { selected: true }
+        // ,
+        // helpers:{
+        //   eq: function (a,b) {return a == b;}
+        // }
       };
 
       db.AvailFeature.findAll({
         order: ["name"]
       }).then(function (dbFeature) {
         hbsObject.features = dbFeature;
-        
+
         db.AvailDetail.findAll({
           order: ["name"]
         
         }).then(function(dbDetail){
           hbsObject.details = dbDetail;
-          
+          console.log(dbDetail[0].dataValues.AvailFeatureId);
           res.render("add-feature", hbsObject);
         })
       });
