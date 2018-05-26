@@ -86,6 +86,8 @@ function initMap() {
                 content: props.content
             });
         }
+
+      
       
         marker2.addListener('click', function(){
             infoWindow3.open(map, marker2);
@@ -101,12 +103,27 @@ function initMap() {
 
 } // end of init map
 
+
+// This function pulls json from  the db and parses it into coords and content for markers and windows
+
 function getParks(){
     $.ajax({
         method: "GET",
         url: '/api/parks'
-    }).then(function(result){
-        console.log(result);
+    }).then(function(result){        
+        var parkArray = [];
+        for(let i=0; i < result.length; i++){
+            let parkName = result[i].name;
+            //this should take out the spaces ==> just realized the links use the space and capitalization, here if needed
+            //let link = parkName.replace(/ /g, '').toLowercase;
+            //console.log(link);
+
+            parkArray.push({
+                coords: [result[i].lat, result[i].lng],
+                content: `<h5><a href="${parkName}"> ${parkName} </a></h5>`
+            });
+        }
+        console.log(parkArray);
     });
 }
             
