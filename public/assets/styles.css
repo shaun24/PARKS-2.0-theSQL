@@ -1,10 +1,9 @@
-/* * { */
-    /* box-sizing: border-box; */
-/* } */
+* {
+    box-sizing: border-box;
+}
 
 body {
-    
-    background-image: url("../../assets/images/parks/trees.png");
+    background-image: url("../../assets/images/pics/cltblue.png");
     background-image: no-repeat, center;
     position:relative;
    
@@ -31,8 +30,8 @@ body {
 
 
 #layout {
-    background-image: url("../../assets/images/parks/trees.png");
-    background-image: no-repeat, center;
+    /* background-image: url("../../assets/images/pics/cltblue.png"); */
+    /* background-image: no-repeat, center; */
     position: relative;
     left: 0;
     padding-left: 0;
@@ -47,7 +46,7 @@ body {
     }
 
 .content {
-    background-image: url("../../assets/images/parks/trees.png");
+    /* background-image: url("../../assets/images/parks/trees.png"); */
     background-position: center;
     margin: 0 auto;
     padding: 0 2em;
@@ -58,14 +57,12 @@ body {
 
 .header {
     
-    background-image: url("../../assets/images/parks/trees.png");
-    background-image: no-repeat, center;
-    
+    /* background-image: url("../../assets/images/pics/cltblue.png"); */
+    /* background-image: no-repeat, center; */
     margin: 0;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    color: white;
-    
-    text-shadow:5px 5px 10px black;
+    text-transform: capitalize;
+    text-shadow:5px 5px 10px white;
      text-align: center;
      position: -webkit-sticky;
      position: sticky;
@@ -75,6 +72,8 @@ body {
      margin-top: 0.5em;
      
  }
+
+
 
     /* .header h1 { */
         /* margin: 0.2em 0; */
@@ -108,8 +107,8 @@ appears on the left side of the page.
     left: 0;
     bottom: 0;
     z-index: 1000; /* so the menu or its navicon stays above all content */
-    background-image: url("../../assets/images/parks/giphy.gif");
-    background-image: no-repeat center center fixed; 
+    background-image: url("../../assets/images/pics/giphy.gif");
+    background-position: top; 
     background-size: cover;
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
@@ -118,8 +117,11 @@ appears on the left side of the page.
     All anchors inside the menu should be styled like this.
     */
     #menu a {
-        color: white;
+        color: navy;
+        font-style: italic;
         border-style: hidden;
+        font-family: Arial, Helvetica, sans-serif;
+        font-weight: bold;
         padding: 0.6em 0 0.6em 0.6em;
     }
 
@@ -137,15 +139,15 @@ appears on the left side of the page.
     */
     #menu .pure-menu ul,
     #menu .pure-menu .menu-item-divided {
-        border-top: 1px hidden whitesmoke;
+        border-top: 1px hidden black;
     }
         /*
         Change color of the anchor links on hover/focus.
         */
         #menu .pure-menu li a:hover,
         #menu .pure-menu li a:focus {
-            background: steelblue;
-            color: #fff;
+            background: white;
+            color: navy;
         }
 
     /*
@@ -153,13 +155,16 @@ appears on the left side of the page.
     */
     #menu .pure-menu-selected,
     #menu .pure-menu-heading {
-        background: slategray;
+        background: linear-gradient(black, silver);
     }
         /*
         This styles a link within a selected menu item `<li>`.
         */
         #menu .pure-menu-selected a {
-            color: #fff;
+            color: white;
+             background: linear-gradient(silver, black);
+            text-shadow: white;
+            
         }
 
     /*
@@ -167,7 +172,7 @@ appears on the left side of the page.
     */
     #menu .pure-menu-heading {
         font-size: 110%;
-        color: #fff;
+        color: whitesmoke;
         margin: 0;
     }
 
@@ -179,9 +184,13 @@ appears on the left side of the page.
     top: 0;
     left: 0; 
     
-    background: #000; rgb(5, 77, 5);
+    background: #000;
     /* background: rgba(0,0,0,0.7); rgb (5, 77, 5, 0.7); */
-    font-size: 10px; 
+    font-family: Helvetica;
+    font-size: 14px;
+    font-weight: bold;
+   font-style: italic;
+    text-shadow: #fff;
     z-index: 10;
     width: 2em;
     height: auto;
@@ -201,7 +210,8 @@ appears on the left side of the page.
     .menu-link span,
     .menu-link span:before,
     .menu-link span:after {
-        background-color: #fff;
+        background-color: blue;
+        font-display: bold;
         width: 100%;
         height: 0.2em;
     }
@@ -244,7 +254,7 @@ appears on the left side of the page.
 /* ===================================================================== */
 
 footer { 
-    background-image: url("../../assets/images/parks/trees.png");
+    background-image: url("../../assets/images/pics/gravel.png");
     background-position: bottom;
     position: fixed;
     left: 0;
@@ -266,7 +276,7 @@ footer {
 }
 
 .cred  {
-   color: slategray;
+   color: white;
     margin-bottom: .1em;
     margin-top: 2em;
     font-size: .5em;
@@ -274,10 +284,10 @@ footer {
 
 .cred a, .cred a:focus, .cred a:visited{
     text-decoration: none;
-    color: slategray;
+    color: white;
 }
 .cred:hover, .cred a:hover {
-    background: slategray;
+    background: white;
     color: white;
 }
 
@@ -290,13 +300,13 @@ footer {
     border-style: insert;
     text-align: left;
     padding-left: 1em;
-    background-color: slategray;
+    background-color:;
     
 }   
 
 .form-boxes input {
     margin: .5em auto;
-    border-bottom: 2px solid black;
+    border-bottom: 2px solid white;
 }
 
 .submit-btn {
@@ -309,7 +319,7 @@ footer {
 #map {
     
     height: 30em;
-    border: 2px solid slategrey;
+    border: 2px solid navy;
     border-radius: 15px;
     box-shadow: 5px 5px 3px 1px darkgrey;
 }
@@ -336,12 +346,12 @@ footer {
     width: 2em;
     margin: .2em;
     padding: .1em;
-    border: 1px solid black;
+    border: 1px solid white;
     border-radius: 10px;
 }
 
 .icon-list {
-    background-color: slategray;
+    background-color: lightblue;
     width: 60%;
     margin: 0 auto;
     position: relative;
@@ -362,7 +372,7 @@ footer {
     width: 90%;
     margin: 0 auto;
     margin-bottom: 3em;
-    background-color: rgb(100, 120, 100, .5);
+    background-color: rgba(55, 58, 55, 0.5);
 }
 
 #all-features img {
@@ -375,7 +385,7 @@ footer {
 
 #all-features li {
     display: inline-block;
-    border: 2px solid green;
+    border: 2px solid silver;
     margin: 1em;
     padding: 1em;
     text-align: left;
@@ -385,7 +395,7 @@ footer {
 }
 
 .back {
-    background-color: #0080009e;
+    background-color: silver;
     width: 60%;
     margin: 0 auto;
     border: .1em solid white;
@@ -465,7 +475,7 @@ footer {
     font-weight: bold;
     text-shadow: .1em .1em .1em black;
     background-position: center;
-    background-color:  rgba(30, 167, 26, 0.671);
+    background-color:  silver;
     
 }
 
@@ -484,7 +494,7 @@ footer {
 }
 
 .info {
-    background-color:  rgba(30, 167, 26, 0.671);
+    background-color: silver (30, 167, 26, 0.671);
     width: 55%;
     margin: 0 auto;
 }
@@ -510,7 +520,7 @@ footer {
 }
 
 .parcon ul {
-    background-color: rgba(31, 167, 26, 0.75);
+    background-color: silver;
 }
 
 /* about */
@@ -568,7 +578,7 @@ Hides the menu at `48em`, but modify this based on your app's needs.
 
     #map {
         height: 20em;
-        border: 3px solid green;
+        border: 3px solid silver;
     }
 
     .icon {
@@ -602,7 +612,7 @@ Hides the menu at `48em`, but modify this based on your app's needs.
 
     #all-features li {
         display: inline-block;
-        border: 2px solid green;
+        border: 2px solid silver;
         margin: 1em auto;
         padding: 1em;
         text-align: left;
