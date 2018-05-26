@@ -1,4 +1,9 @@
-//var map, infoWindow;
+//var db = require("../models");
+//var axios= require("axios");
+
+
+
+
 function initMap() {
     const map = new google.maps.Map(document.getElementById("map"), {
         center: { lat: 35.2271, lng: -80.8431 },
@@ -7,15 +12,17 @@ function initMap() {
     });
 
   
-
+    getParks();
     
     // marker making functions
     //=======================================================
+    
+    //pull in database info to make arrays
 
     //array of markers
     const bballParks = [{
         coords:  [35.1945, -80.8420],
-        content: `<h6>Freedom Park</h6>`,
+        content: `<h6><a href="/all-features">Freedom Park</a></h6>`,
         }];
 
     const markers = [
@@ -42,6 +49,7 @@ function initMap() {
    
     var basketballBox = document.getElementById("basketball");
     basketballBox.addEventListener('click', function(){
+        
         makeMarkers(bballParks);
         console.log(`console log`)
     });
@@ -93,7 +101,14 @@ function initMap() {
 
 } // end of init map
 
-
+function getParks(){
+    $.ajax({
+        method: "GET",
+        url: '/api/parks'
+    }).then(function(result){
+        console.log(result);
+    });
+}
             
 // Geocoding Funcitons: example makes a list 
 //=========================================================

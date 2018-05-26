@@ -25,6 +25,7 @@
   "homepage": "https://github.com/Bmacclt/parksandrec#readme",
   "dependencies": {
     "@google/maps": "^0.4.6",
+    "axios": "^0.18.0",
     "body-parser": "^1.18.2",
     "ember-truth-helpers": "^2.0.0",
     "express": "^4.16.3",
