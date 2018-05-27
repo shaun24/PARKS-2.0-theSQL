@@ -1,4 +1,3 @@
-//var map, infoWindow;
 function initMap() {
     const map = new google.maps.Map(document.getElementById("map"), {
         center: { lat: 35.2271, lng: -80.8431 },
@@ -7,21 +6,21 @@ function initMap() {
     });
 
   
-
+    getParks();
     
     // marker making functions
     //=======================================================
-
-    //array of markers
+    
+    //array of markers TO BE REPLACED WITH DB DATA
     const bballParks = [{
         coords:  [35.1945, -80.8420],
-        content: `<h6>Freedom Park</h6>`,
+        content: `<h6><a href="/Freedom">Freedom Park</a></h6>`,
         }];
 
     const markers = [
         {
          coords:  [35.227,-80.8373],
-         content: `<h6><a href="/">First Ward Park</a></h6>`,
+         content: `<h6><a href="/First Ward">First Ward Park</a></h6>`,
         },
         {
         coords:  [35.2271, -80.8431],
@@ -42,14 +41,13 @@ function initMap() {
    
     var basketballBox = document.getElementById("basketball");
     basketballBox.addEventListener('click', function(){
+        
         makeMarkers(bballParks);
         console.log(`console log`)
     });
 
     //call markerMaker Array
     //makeMarkers(markers);
-
-
 
     function makeMarkers(array){
         for(let i = 0; i < array.length; i++){
@@ -77,7 +75,7 @@ function initMap() {
              infoWindow3 = new google.maps.InfoWindow({
                 content: props.content
             });
-        }
+        }      
       
         marker2.addListener('click', function(){
             infoWindow3.open(map, marker2);
@@ -90,10 +88,32 @@ function initMap() {
         })
     }
 
-
 } // end of init map
 
 
+// This function pulls json from  the db and parses it into coords and content for markers and windows
+
+function getParks(){
+    $.ajax({
+        method: "GET",
+        url: '/api/parks'
+    }).then(function(result){        
+        var parkArray = [];
+        for(let i=0; i < result.length; i++){
+            let parkName = result[i].name;
+            //this should take out the spaces ==> just realized the links use the space and capitalization, here if needed
+            //let link = parkName.replace(/ /g, '').toLowercase;
+            //console.log(link);
+
+            parkArray.push({
+                coords: [result[i].lat, result[i].lng],
+                content: `<h5><a href="/${parkName}"> ${parkName} Park</a></h5>`
+            });
+        }
+        console.log(parkArray);
+        //makeMarkers(parkArray)
+    });
+}
             
 // Geocoding Funcitons: example makes a list 
 //=========================================================
@@ -101,11 +121,11 @@ function initMap() {
 //geocode();
 
 //get location  form
-var locationForm = document.getElementById('pin-form');
+//var locationForm = document.getElementById('pin-form');
 
 //locationForm.addEventListener('submit', geocode)
 
-
+//not in use currently
 function geocode(event, address){
     //change this to checkbox value to find address based on activity selected
     let address = document.getElementById('input-id').value;

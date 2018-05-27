@@ -97,7 +97,7 @@ module.exports = function (app) {
         
         }).then(function(dbDetail){
           hbsObject.details = dbDetail;
-          console.log(dbDetail[0].dataValues.AvailFeatureId);
+          //console.log(dbDetail[0].dataValues.AvailFeatureId);
           res.render("add-feature", hbsObject);
         })
       });

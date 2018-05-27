@@ -13,8 +13,10 @@ $(document).ready(function(){
         switch (api) {
           case "parks":
             $("#subheader").text(`${result.name} Added!`);
+            alert(`ALERT`);
             if (images) {
               upload(result.id, images);
+              alert(`park added`);
             };
             break;
           case "features":
@@ -141,6 +143,13 @@ $(document).ready(function(){
       };
       clearForm($("#new-park"));
     });
+    if (images.length === 0){
+      add(data, "parks");
+      //alert(`Park added`);
+    } else {
+      add(data, "parks", imgForm);
+    };
+    clearForm($("#new-park"));
   });
 
   // add Feature button click
