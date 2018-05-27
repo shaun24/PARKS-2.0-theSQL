@@ -1,4 +1,11 @@
+// require the dependencies
+require('dotenv').config();
+var axios = require('axios');
 var db = require("../models");
+var keys = require("../keys.js");
+
+// activate api keys
+var googleMapsGeoKey = keys.google.id;
 
 module.exports = function (app) {
 
@@ -11,7 +18,7 @@ module.exports = function (app) {
         });
     });
 
-    app.get("/api/:name", function (req, res) {
+    app.get("/api/parks/:name", function (req, res) {
         db.Park.findOne({
             where: {
                 name: req.params.name
@@ -22,6 +29,22 @@ module.exports = function (app) {
             };
             res.json(hbsObject);
         })
+    });
+
+    // route to convert the address into latitude and longitude
+    app.get("/api/latlng", function(req, res) {
+        var latlngUrl = "https://maps.googleapis.com/maps/api/geocode/json";
+        var parsedAddress = req.query.address.replace(/\s/g, "+")
+        axios.get(latlngUrl, {
+            params: {
+                address: parsedAddress,
+                key: googleMapsGeoKey
+            }
+        }).then(function(response) {
+            res.json(response.data.results[0].geometry.location);
+        }).catch(function(error) {
+            res.json(error);
+        });
     });
 
 

@@ -62,6 +62,8 @@ $(document).ready(function(){
 
   // function to add details to the database
   function addDetails(features, details) {
+
+    // go through the details array and the returned features array to assign the FeatureId to the correct detail
     details.forEach(function(det, idx) {
       features.forEach(function(feat) {
         if (feat.name === det.feature) {
@@ -69,6 +71,8 @@ $(document).ready(function(){
         };
       });
     });
+
+    // format the details to coincide with the database
     var detObjArray = [];
     details.forEach(function(item){
       detObjArray.push({
@@ -118,18 +122,25 @@ $(document).ready(function(){
       imgForm.append("file-" + idx, image)
     });
 
-    // create a data object to send to the parks table
+    // create a data object
     var form = $("#new-park").serializeArray();
     var data = {};
     form.forEach(function(item){
-      data[item.name] = item.value;
+      data[item.name] = item.value.trim();
     });
-    if (images.length === 0){
-      add(data, "parks");
-    } else {
-      add(data, "parks", imgForm);
-    };
-    clearForm($("#new-park"));
+
+    // convert the address into latitude and longitude, add them to the data object, and call the fuction to add the park to the database
+    $.get("/api/latlng", data, function(response){
+      data.lat = response.lat;
+      data.lng = response.lng;
+      console.log(data);
+      if (images.length === 0){
+        add(data, "parks");
+      } else {
+        add(data, "parks", imgForm);
+      };
+      clearForm($("#new-park"));
+    });
   });
 
   // add Feature button click
@@ -141,16 +152,24 @@ $(document).ready(function(){
     var featArray = [];
     var detArray = [];
     var featureName = "";
+
+    // separate the features and details from the submitted form into separate arrays
     $(":input", $("#new-feature")).each(function(item) {
       var type = this.type;
+
+      // put the selected park and the checkbox values into a features array
       if (type === "checkbox" && this.checked || type === "select-one") {
         featArray.push({
           name: this.name,
           value: this.value
         });
+
+        // assigns the feature name to a variable
         if (this.value == 1) {
           featureName = this.name;
         }
+
+      // put the names/values of the number boxes along with the feature name into a details array
       } else if (type === "number" && this.value != "") {
         detArray.push({
           name: this.name,
@@ -159,6 +178,8 @@ $(document).ready(function(){
         });
       };
     });
+
+    // formats the feature information to coincide with the database format
     featArray.forEach(function(item){
       if (item.name === "ParkId") {
         park = item.value;
@@ -177,6 +198,7 @@ $(document).ready(function(){
     clearForm($("#new-feature"));
   });
 
+  // resets the subheader to the default message
   $("input").focus(function(){
     if (window.location.pathname === "/add-park"){
       $("#subheader").text("Add your favorite park to our database");

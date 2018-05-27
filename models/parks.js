@@ -6,7 +6,10 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: false,
       validate: {
         notEmpty: true,
-        isAlphanumeric: true
+        is: {
+          args: /^[a-z0-9\s]+$/i,
+          msg: "Park Name must be alphanumeric (spaces allowed)"
+        }
       }
     },
     size: {
@@ -33,7 +36,25 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
-        notEmpty: true
+        notEmpty: true,
+        is: {
+          args: /^[a-z0-9\s\,\.]+$/i,
+          msg: "Park Address must be alphanumeric (commas, periods, and spaces allowed)"
+        }
+      }
+    },
+    lat: {
+      type: DataTypes.DECIMAL(10, 7),
+      allowNull: false,
+      validate: {
+        isDecimal: true
+      }
+    },
+    lng: {
+      type: DataTypes.DECIMAL(10, 7),
+      allowNull: false,
+      validate: {
+        isDecimal: true
       }
     }
   });
