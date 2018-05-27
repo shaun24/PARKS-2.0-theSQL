@@ -125,64 +125,66 @@ module.exports = function (app) {
   //=====================================================
   app.get("/features/:feature", function (req, res) {
     var feature = req.params.feature;
-    var whereClause = {};
-    console.log(feature);
-    switch (feature) {
-      case "basketball":
-        whereClause = { basketball: true };
-        break;
+    // var whereClause = {};
+    // console.log(feature);
+    // switch (feature) {
+    //   case "basketball":
+    //     whereClause = { basketball: true };
+    //     break;
 
-      case "dogPark":
-        whereClause = { dogPark: true };
-        break;
+    //   case "dogPark":
+    //     whereClause = { dogPark: true };
+    //     break;
 
-      case "golf":
-        whereClause = { golf: true };
-        break;
+    //   case "golf":
+    //     whereClause = { golf: true };
+    //     break;
 
-      case "handiAcces":
-        whereClause = { handiAcces: true };
-        break;
+    //   case "handiAcces":
+    //     whereClause = { handiAcces: true };
+    //     break;
 
-      case "playground":
-        whereClause = { playground: true };
-        break;
+    //   case "playground":
+    //     whereClause = { playground: true };
+    //     break;
 
-      case "soccer":
-        whereClause = { soccer: true };
-        break;
+    //   case "soccer":
+    //     whereClause = { soccer: true };
+    //     break;
 
-      case "tennis":
-        whereClause = { tennis: true };
-        break;
+    //   case "tennis":
+    //     whereClause = { tennis: true };
+    //     break;
 
-      case "trails":
-        whereClause = { trails: true };
-        break;
+    //   case "trails":
+    //     whereClause = { trails: true };
+    //     break;
 
-      case "vendingMachines":
-        whereClause = { vendingMachines: true };
-        break;
+    //   case "vendingMachines":
+    //     whereClause = { vendingMachines: true };
+    //     break;
 
-      case "views":
-        whereClause = { views: true };
-        break;
+    //   case "views":
+    //     whereClause = { views: true };
+    //     break;
 
-      case "waterSports":
-        whereClause = { waterSports: true };
-        break;
+    //   case "waterSports":
+    //     whereClause = { waterSports: true };
+    //     break;
 
-      case "workoutGear":
-        whereClause = { workoutGear: true };
-        break;
+    //   case "workoutGear":
+    //     whereClause = { workoutGear: true };
+    //     break;
 
-      case name:
-        whereClause = { name: req.param.body }
+    //   case name:
+    //     whereClause = { name: req.param.body }
 
-
-    }
-    db.Park.findAll({
-      where: whereClause,
+    // }
+    db.Feature.findAll({
+      where: {
+        name: feature
+      },
+      include: [db.Park],
       order: ["name"]
     }).then(function (dbPark) {
       var hbsObject = {
@@ -190,6 +192,7 @@ module.exports = function (app) {
         layout: "main"
       };
 
+      console.log(dbPark[0].dataValues);
       res.render("feature", hbsObject);
 
     });

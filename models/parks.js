@@ -7,8 +7,8 @@ module.exports = function(sequelize, DataTypes) {
       validate: {
         notEmpty: true,
         is: {
-          args: /^[a-z0-9\s]+$/i,
-          msg: "Park Name must be alphanumeric (spaces allowed)"
+          args: /^[a-z0-9\s\'\.]+$/i,
+          msg: "Park Name must be alphanumeric (spaces, apostrophies, and periods allowed)"
         }
       }
     },
