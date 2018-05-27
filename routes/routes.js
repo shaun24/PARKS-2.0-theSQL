@@ -36,12 +36,18 @@ module.exports = function (app) {
   //All Features
   //=====================================================
   app.get("/all-features", function (req, res) {
-    db.Park.findAll({}).then(function (dbPark) {
+    db.AvailFeature.findAll({
+      order: ["name"]
+    }).then(function (dbAvailFeature) {
+      var img;
+      dbAvailFeature.forEach(function(item) {
+        img = item.dataValues.name.toLowerCase().replace(/\s/g, "_");
+        item.dataValues.icon = `${img}.png`
+      });
       var hbsObject = {
-        parks: dbPark,
+        features: dbAvailFeature,
         feat: { selected: true }
       };
-
       res.render("all-features", hbsObject);
     });
   });
@@ -192,7 +198,6 @@ module.exports = function (app) {
         layout: "main"
       };
 
-      console.log(dbPark[0].dataValues);
       res.render("feature", hbsObject);
 
     });

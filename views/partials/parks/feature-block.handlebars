@@ -3,11 +3,11 @@
 {{#each parks}}
    
     <li class="pure-u-4-5 a-z">
-        <a href="/{{name}}"><h2>{{name}}</h2></a>
-        <h6>{{address}}</h6>
-        <h6>Size: {{size}}</h6>
+        <a href="/{{Park.dataValues.name}}"><h2>{{Park.dataValues.name}}</h2></a>
+        <h6>{{Park.dataValues.address}}</h6>
+        <h6>Size: {{Park.dataValues.size}}</h6>
         {{!-- partial for icon list --}}
-        {{> parks/park-block}}
+        {{!-- {{> parks/park-block}} --}}
         
     </li> 
 
