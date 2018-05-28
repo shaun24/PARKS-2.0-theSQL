@@ -2,11 +2,10 @@ function initMap() {
     const map = new google.maps.Map(document.getElementById("map"), {
         center: { lat: 35.2271, lng: -80.8431 },
         rotateControl: true,
-        zoom: 11
+        zoom: 9
     });
 
     //function to pull in data
-    //var parkArray = [];
     getParks();
     //makeMarkers(parkArray);
     
@@ -92,7 +91,8 @@ function getParks(){
     $.ajax({
         method: "GET",
         url: '/api/parks'
-    }).then(function(result){        
+    }).then(function(result){ 
+        console.log(result);       
         var parkArray = [];
         for(let i=0; i < result.length; i++){
             let parkName = result[i].name;
