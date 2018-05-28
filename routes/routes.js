@@ -38,25 +38,25 @@ module.exports = function (app) {
     });
   });
 
-  app.get("/all-parks2", function (req, res) {
-    db.Park.findAll({
-      order: ["name"],
-      include: [{
-        model:db.Image
-      },
-      {
-        model:db.Feature
-      }]
-    }).then(function (dbPark) {
-      var hbsObject = {
-        parks: dbPark,
-        az: { selected: true }
-      };
-      console.log(hbsObject);
+  // app.get("/all-parks2", function (req, res) {
+  //   db.Park.findAll({
+  //     order: ["name"],
+  //     include: [{
+  //       model:db.Image
+  //     },
+  //     {
+  //       model:db.Feature
+  //     }]
+  //   }).then(function (dbPark) {
+  //     var hbsObject = {
+  //       parks: dbPark,
+  //       az: { selected: true }
+  //     };
+  //     console.log(hbsObject);
 
-      res.json(hbsObject);
-    });
-  });
+  //     res.json(hbsObject);
+  //   });
+  // });
 
   //All Features
   //=====================================================
