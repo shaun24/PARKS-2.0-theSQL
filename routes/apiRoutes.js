@@ -11,11 +11,22 @@ module.exports = function (app) {
 
     app.get("/api/parks", function (req, res) {
         db.Park.findAll({
-            order: ["name"]
-        }).then(function (dbPark) {
-
-            res.json(dbPark);
-        });
+            order: ["name"],
+            include: [{
+              model:db.Image
+            },
+            {
+              model:db.Feature
+            }]
+          }).then(function (dbPark) {
+            var hbsObject = {
+              parks: dbPark,
+              az: { selected: true }
+            };
+            console.log(hbsObject);
+      
+            res.json(hbsObject);
+          });
     });
 
     app.get("/api/parks/:name", function (req, res) {
