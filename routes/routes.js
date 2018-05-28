@@ -154,8 +154,8 @@ module.exports = function (app) {
     
   //Individual Feature Page
   //=====================================================
-  app.get("/features/:feature", function (req, res) {
-    var feature = req.params.feature;
+  app.get("/features?:feature", function (req, res) {
+    var feature = req.query.name;
     // var whereClause = {};
     // console.log(feature);
     // switch (feature) {
@@ -211,20 +211,26 @@ module.exports = function (app) {
     //     whereClause = { name: req.param.body }
 
     // }
-    db.Feature.findAll({
-      where: {
-        name: feature
-      },
-      include: [db.Park],
-      order: ["name"]
+
+    db.Park.findAll({
+      include: [
+        {
+          model: db.Feature,
+          where: {
+            name: feature
+          }
+        },
+        {
+          model: db.Image
+        }
+      ]
     }).then(function (dbPark) {
       var hbsObject = {
         parks: dbPark,
         layout: "main"
       };
-
+      console.log(hbsObject);
       res.render("feature", hbsObject);
-
     });
   });
 

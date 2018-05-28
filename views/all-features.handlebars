@@ -7,10 +7,12 @@
 <ul class="pure-g" id="all-features">
     {{#each features}}
       <li class="pure-u-20-24">
-        <div class="back">
-          <img src="./assets/images/png/{{dataValues.icon}}">
-          <h3>{{name}}</h3>
-        </div>
+        <a href="/features?name={{name}}">
+          <div class="back feature">
+            <img src="./assets/images/png/{{dataValues.icon}}">
+            <h3>{{name}}</h3>
+          </div>
+        </a>
       </li>
     {{/each}}
 

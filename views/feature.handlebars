@@ -1,5 +1,20 @@
 <div class="header">
     <h1>Search by Feature</h1>
 </div>
-
-{{> parks/feature-block}}
+<ul class="pure-g all">
+    {{#each parks}}
+    <div class="pure-u-4-5 a-z solo" style="background-image: url('./{{#if Images}}{{#each Images}}{{url}}{{/each}}'{{else}}assets/images/parks/{{id}}.jpg'{{/if}});">
+        <div class="info">
+           <a href="/{{name}}"><h2>{{name}}</h2></a>
+            <h6>{{address}} | Size: {{size}}</h6>
+        </div>
+        
+    {{!-- partial for icon list --}}
+        {{!-- <div class="pure-u-8-12 .bar"> --}}
+            {{> parks/park-block}}
+        {{!-- </div> --}}
+        
+        
+    </div>           
+    {{/each}}
+</ul>
