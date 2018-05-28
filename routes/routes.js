@@ -225,11 +225,11 @@ module.exports = function (app) {
         }
       ]
     }).then(function (dbPark) {
-      console.log(dbPark[0].dataValues.Images);
       var hbsObject = {
         parks: dbPark,
         layout: "main"
       };
+      console.log(hbsObject);
       res.render("feature", hbsObject);
     });
   });
