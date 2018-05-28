@@ -18,14 +18,8 @@ module.exports = function (app) {
             {
               model:db.Feature
             }]
-          }).then(function (dbPark) {
-            var hbsObject = {
-              parks: dbPark,
-              az: { selected: true }
-            };
-            console.log(hbsObject);
-      
-            res.json(hbsObject);
+          }).then(function (dbPark) {      
+            res.json(dbPark);
           });
     });
 
