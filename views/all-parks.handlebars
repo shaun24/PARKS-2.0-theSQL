@@ -6,7 +6,7 @@
 
 <ul class="pure-g all">
     {{#each parks}}
-    <div class="pure-u-4-5 a-z solo" style="background-image: url('./assets/images/parks/{{id}}.jpg');">
+    <div class="pure-u-4-5 a-z solo" style="background-image: url('./{{#if Images}}{{Images.url}}'{{else}}assets/images/parks/{{id}}.jpg'{{/if}});">
         <div class="info">
            <a href="/{{name}}"><h2>{{name}}</h2></a>
             <h6>{{address}} | Size: {{size}}</h6>

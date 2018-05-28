@@ -20,8 +20,13 @@ module.exports = function (app) {
   //====================================================== 
   app.get("/all-parks", function (req, res) {
     db.Park.findAll({
-      order: ["name"]
-
+      order: ["name"],
+      include: [{
+        model:db.Image
+      },
+      {
+        model:db.Feature
+      }]
     }).then(function (dbPark) {
       var hbsObject = {
         parks: dbPark,
@@ -30,6 +35,26 @@ module.exports = function (app) {
       console.log(hbsObject);
 
       res.render("all-parks", hbsObject);
+    });
+  });
+
+  app.get("/all-parks2", function (req, res) {
+    db.Park.findAll({
+      order: ["name"],
+      include: [{
+        model:db.Image
+      },
+      {
+        model:db.Feature
+      }]
+    }).then(function (dbPark) {
+      var hbsObject = {
+        parks: dbPark,
+        az: { selected: true }
+      };
+      console.log(hbsObject);
+
+      res.json(hbsObject);
     });
   });
 
@@ -210,7 +235,13 @@ module.exports = function (app) {
     db.Park.findOne({
       where: {
         name: req.params.name
-      }
+      },
+      include: [{
+        model:db.Image
+      },
+      {
+        model:db.Feature
+      }]
     }).then(function (dbPark) {
       var hbsObject = {
         parks: dbPark

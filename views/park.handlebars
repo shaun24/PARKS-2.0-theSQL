@@ -1,6 +1,6 @@
 {{!-- individual park page --}}  
 {{#with parks}} 
-<div class="header solo" style="background-image: url('./assets/images/parks/{{id}}.jpg');">
+<div class="header solo" style="background-image: url('./{{#if Images}}{{Images}}'{{else}}assets/images/parks/{{id}}.jpg'{{/if}});">
     <div class="box">
         <h1>{{name}}</h1>
         <h2>{{address}}</h2>
