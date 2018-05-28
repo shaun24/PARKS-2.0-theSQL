@@ -5,8 +5,10 @@ function initMap() {
         zoom: 11
     });
 
-  
+    //function to pull in data
+    //var parkArray = [];
     getParks();
+    //makeMarkers(parkArray);
     
     // marker making functions
     //=======================================================
@@ -36,8 +38,6 @@ function initMap() {
         }
         
     ];
-
-
    
     var basketballBox = document.getElementById("basketball");
     basketballBox.addEventListener('click', function(){
@@ -54,7 +54,6 @@ function initMap() {
             //add logic here to filter array based on features
             addMarker(array[i]);
         }
-
     }
 
     function addMarker(props) {
@@ -63,7 +62,6 @@ function initMap() {
             position: new google.maps.LatLng(props.coords[0], props.coords[1]),
             animation: google.maps.Animation.DROP,
             map: map
-
         });
         //check for custom icon
         if(props.iconImage){
@@ -82,17 +80,14 @@ function initMap() {
             map.setZoom(14);
             map.setCenter(marker2.getPosition());
         });
+
         infoWindow3.addListener('closeclick', function(){
             map.setZoom(11);
             map.setCenter({ lat: 35.2271, lng: -80.8431 });
         })
     }
 
-} // end of init map
-
-
-// This function pulls json from  the db and parses it into coords and content for markers and windows
-
+    
 function getParks(){
     $.ajax({
         method: "GET",
@@ -106,14 +101,21 @@ function getParks(){
             //console.log(link);
 
             parkArray.push({
-                coords: [result[i].lat, result[i].lng],
+                coords: [parseFloat(result[i].lat), parseFloat(result[i].lng)],
                 content: `<h5><a href="/${parkName}"> ${parkName} Park</a></h5>`
             });
         }
         console.log(parkArray);
-        //makeMarkers(parkArray)
+        //return parkArray
+        makeMarkers(parkArray)
     });
 }
+
+
+} // end of init map
+
+// This function pulls json from  the db and parses it into coords and content for markers and windows
+
             
 // Geocoding Funcitons: example makes a list 
 //=========================================================
