@@ -84,16 +84,37 @@ body {
 */
 #sign-in-modal{
     display: none;
-    width: 40%;
-    height: 55%;
+    width: 33%;
+    height: 60%;
     overflow: auto;
     margin: auto;
     position: absolute;
     top: 0; left: 0; bottom: 0; right: 0;
     border: solid black;
     background-color:pink; 
+    border-radius: 25px;
+    text-align: center;
+    overflow: hidden;
 }
 
+#sign-in-modal-x{
+    font-size: 33px;
+    right: -45%;
+    position: relative;
+    
+}
+#sign-in-modal-x:hover{
+    cursor: pointer;
+    color: red;
+}
+
+#sign-in-modal-header{
+    margin-top: -3px;
+}
+
+#sign-in-modal-error{
+    color: red;
+}
 /*
 The `#menu` `<div>` is the parent `<div>` that contains the `.pure-menu` that
 appears on the left side of the page.

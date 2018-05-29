@@ -1,6 +1,6 @@
 module.exports = function(sequelize, DataTypes) {
   var Image = sequelize.define("Image", {
-    url: {
+    file: {
       type: DataTypes.STRING,
       unique: true,
       validate: {

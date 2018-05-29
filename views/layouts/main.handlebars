@@ -41,7 +41,12 @@
 					{{!-- <li class="pure-menu-item menu-item-divided {{#if contact.selected}}pure-menu-selected{{/if}}"><a href="#" class="pure-menu-link">Contact</a></li> --}}
 					<li class="pure-menu-item {{#if add-park.selected}}pure-menu-selected{{/if}}"><a href="/add-park" class="pure-menu-link">Add a Park </a></li>
 					<li class="pure-menu-item {{#if add-feature.selected}}pure-menu-selected{{/if}}"><a href="/add-feature" class="pure-menu-link">Add Park Features </a></li>
+<<<<<<< HEAD
 					<li class="pure-menu-item {{#if sign-in.selected}}pure-menu-selected{{/if}}" id="sign-in"><a href="/sign-in" class="pure-menu-link">Sign in </a></li>
+=======
+					<li class="pure-menu-item" id = "sign-in"><a class="pure-menu-link">Sign in </a></li>
+					{{!-- <li class="pure-menu-item {{#if sign-in.selected}}pure-menu-selected{{/if}}" id = "sign-in"><a href="/sign-in" class="pure-menu-link">Sign in </a></li> --}}
+>>>>>>> 92d878852c6081f2bec3d5964ab4df0dfa728a0f
 				</ul>
 			
 			</div>
@@ -53,6 +58,7 @@
 		
 
 	<footer>
+		<p>&trade;2018 Brian Strylowski, Bryan Zimmerman, Brian Mcilravy, Shaun Shah, Caleb Renfrow, John Dekis</p>
     	<div class="social">
 			<i class="fab fa-facebook-square fa-3x"></i>
 			<a href="https://github.com/Bmacclt/parksandrec" target="_blank"><i class="fab fa-github-square fa-3x"></i></a>
@@ -78,18 +84,29 @@
 		<div id="sign-in-modal">
 			<div >
 			<header > 
-				<span onclick="document.getElementById('sign-in-modal').style.display='none'">
+				<span id = "sign-in-modal-x" onclick="document.getElementById('sign-in-modal').style.display='none'">
 					&times;
 				</span>
 				<div >
-					<h1> Sign into your account</h1>
-					<h2 id="subheader"></h2>
+					<h1 id="sign-in-modal-header"> Sign in to your account</h1>
+					<p id="sign-in-modal-error"></p>
 				</div>
 			</header>
+			<div class="sign-in content">
+				<form class="pure-form pure-form-stacked" id="sign-in">
+					<fieldset class="pure-group">
+						
+						<input type="text" name="name" placeholder="Email" class="pure-input-1" id="sign-in-email"><br>
 			
-			<footer >
-				<p>&trade;2018 Brian Strylowski, Bryan Zimmerman, Brian Mcilravy, Shaun Shah, Caleb Renfrow, John Dekis</p>
-			</footer>
+						<input type="password" name="password" placeholder="Password" class="pure-input-1" id="sign-in-password">
+						
+					</fieldset>
+
+					<button type="submit"  class="pure-button pure-button-primary submit-btn" id = "sign-in-test" >Sign in</button>
+					<button type="submit"  class="pure-button pure-button-primary submit-btn" id = "sign-up-test" >Sign up</button>
+					
+				</form>
+			</div>
 			</div>
 		</div>
 	{{!-- <script src="./assets/googlemaps.js"></script> --}}
