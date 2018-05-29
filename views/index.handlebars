@@ -24,63 +24,94 @@ didn't work }}
     <br>
 
     <form class="pure-form-stacked pure-g form-boxes" id="pin-form">
-        {{!--
-        <radio value="" disabled selected>Select a Feature</radio> --}}
+        
         <div class="pure-control-group pure-u-1-2">
+            {{!-- Column 1 --}}
+           
             <input type="checkbox" id="basketball">Basketball
             <label class="container">
                 <span class="checkmark"></span>
             </label>
-            {{!--
-            <label class="container" onclick="toggleBball()" id="basketball" value="basketball">Basketball
-                <input type="checkbox"> --}}
-                <input type="checkbox">Golf
-                <label class="container" value="golf" onclick="ToggleGolf()" id="golf">
-                    <span class="checkmark"></span>
-                </label>
-                <input type="checkbox">Playgrounds
-                <label class="container" onclick="TogglePlayGrounds" value="playgrounds" id="playgrounds">
-                    <span class="checkmark"></span>
-                </label>
-                <input type="checkbox">Soccer
-                <label class="container" value="soccer">
-                    <span class="checkmark"></span>
-                </label>
-                <input type="checkbox">Tennis
-                <label class="container" value="tennis">
-                    <span class="checkmark"></span>
-                </label>
-                <input type="checkbox">Trails
-                <label class="container" value="trails">
-                    <span class="checkmark"></span>
-                </label>
+
+            
+            <input type="checkbox" id="concessions">Concessions
+            <label class="container">
+                <span class="checkmark"></span>
+            </label>
+            
+            <input type="checkbox" id="disc-golf"> Disc Golf
+            <label class="container" value="golf" onclick="ToggleGolf()" id="golf">
+                <span class="checkmark"></span>
+            </label>
+
+            <input type="checkbox" id="fields"> Fields
+            <label class="container">
+                <span class="checkmark"></span>
+            </label>
+
+            <input type="checkbox" id="horseshoes"> Horseshoes
+            <label class="container">
+                <span class="checkmark"></span>
+            </label>
+
+            <input type="checkbox" id="picnic"> Picnic Areas
+            <label class="container">
+                <span class="checkmark"></span>
+            </label>
+            
+            <input type="checkbox" id="playgrounds">Playgrounds
+            <label class="container" onclick="TogglePlayGrounds" value="playgrounds" id="playgrounds">
+                <span class="checkmark"></span>
+            </label>
+           
+            
+            
+            
+
         </div>
+
+        {{!-- Column 2 --}}
 
         <div class="pure-control-group pure-u-1-2">
 
-            <input type="checkbox">Vending
-            <label class="container" value="vending-machines">
-                <span class="checkmark"></span>
-            </label>
             <input type="checkbox" id="restrooms"> Restrooms
             <label class="container" value="restrooms">
                 <span class="checkmark"></span>
             </label>
-            <input type="checkbox">Water Activities
+
+            <input type="checkbox" id="tennis">Tennis
+            <label class="container" value="tennis">
+                <span class="checkmark"></span>
+            </label>
+
+            <input type="checkbox" id="tracks">Tracks
+            <label class="container">
+                <span class="checkmark"></span>
+            </label>
+
+            <input type="checkbox" id="trails">Trails
+            <label class="container">
+                <span class="checkmark"></span>
+            </label>
+
+            
+            <input type="checkbox" id="volleyball"> Volleyball
+            <label class="container" value="vending-machines">
+                <span class="checkmark"></span>
+            </label>
+
+            <input type="checkbox" id="water-activities">Water Activities
             <label class="container" value="water-activities">
                 <span class="checkmark"></span>
             </label>
+
             <input type="checkbox" id="handiAccess">Wheel Chair Accessible
             <label class="container" value="accessible">
                 <span class="checkmark"></span>
             </label>
-            <input type="checkbox">Workout Gear
-            <label class="container" value="workout-gear">
-                <span class="checkmark"></span>
-            </label>
+            
         </div>
 
-        {{!-- <input type="submit" id="map-check" class="pure-u-3-5"> --}}
     </form>
 
 </div>
