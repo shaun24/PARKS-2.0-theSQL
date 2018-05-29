@@ -3,10 +3,13 @@
 }
 
 body {
-    background-image: url("../../assets/images/pics/cltblue.png");
-    background-image: no-repeat, center;
-    position:relative;
-    bottom: 3.5em;
+    background-image: url("../../assets/images/pics/charlotte-evening.png");
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin-bottom: 80px;
+    margin-top: -30px;
     
 }
 
@@ -90,17 +93,20 @@ body {
 */
 #sign-in-modal{
     display: none;
-    width: 33%;
-    height: 60%;
+    width: 340px;
+    height: 400px;
     overflow: auto;
-    margin: auto;
+    margin-top: 80px;
+    margin-left: 45%;
     position: absolute;
     top: 0; left: 0; bottom: 0; right: 0;
     border: solid black;
-    background-color:pink; 
+    background-color: deepskyblue;
     border-radius: 25px;
     text-align: center;
     overflow: hidden;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    transition: transform .25s;
 }
 
 #sign-in-modal-x{
@@ -130,17 +136,19 @@ appears on the left side of the page.
 #menu {
     
     margin-left: -150px; /* "#menu" width */
-    width: 150px;
+    width: 160px;
     position: fixed;
     top: 0;
     left: 0;
     bottom: 0;
     z-index: 1000; /* so the menu or its navicon stays above all content */
-    background-image: url("../../assets/images/pics/giphy.gif");
+    background-color: deepskyblue;
+    opacity: .8;
     background-position: top; 
     background-size: cover;
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
+    
 }
     /*
     All anchors inside the menu should be styled like this.
