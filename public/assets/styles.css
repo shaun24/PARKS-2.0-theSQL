@@ -90,10 +90,11 @@ body {
 */
 #sign-in-modal{
     display: none;
-    width: 33%;
-    height: 60%;
+    width: 340px;
+    height: 400px;
     overflow: auto;
-    margin: auto;
+    margin-top: 80px;
+    margin-left: 45%;
     position: absolute;
     top: 0; left: 0; bottom: 0; right: 0;
     border: solid black;
