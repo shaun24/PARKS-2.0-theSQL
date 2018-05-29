@@ -94,6 +94,10 @@ function checkLogin(){
 
   if(user){
     $("#sign-in a").text(user);
+    $(".login-only").css("display"," inline-block");
+  }
+  else{
+    $(".login-only").css("display","none");
   }
 };
 
