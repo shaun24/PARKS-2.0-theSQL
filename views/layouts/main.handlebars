@@ -41,7 +41,7 @@
 					{{!-- <li class="pure-menu-item menu-item-divided {{#if contact.selected}}pure-menu-selected{{/if}}"><a href="#" class="pure-menu-link">Contact</a></li> --}}
 					<li class="pure-menu-item {{#if add-park.selected}}pure-menu-selected{{/if}}"><a href="/add-park" class="pure-menu-link">Add a Park </a></li>
 					<li class="pure-menu-item {{#if add-feature.selected}}pure-menu-selected{{/if}}"><a href="/add-feature" class="pure-menu-link">Add Park Features </a></li>
-					<li class="pure-menu-item" id = "sign-in"><a class="pure-menu-link">Sign in </a></li>
+					<li class="pure-menu-item {{#if sign-in.selected}}pure-menu-selected{{/if}}" id = "sign-in"><a href="/sign-in" class="pure-menu-link">Sign in </a></li>
 				</ul>
 			
 			</div>
@@ -86,21 +86,7 @@
 					<h2 id="subheader"></h2>
 				</div>
 			</header>
-			<div class="sign-in content">
-    <form class="pure-form pure-form-stacked" id="sign-in">
-        <fieldset class="pure-group">
-        
-            <input type="text" name="name" placeholder="Email here" class="pure-input-1"><br>
-
-            <input type="text" name="password" placeholder="Password" class="pure-input-1"><br>
-            
-        </fieldset>
-
-        <button type="submit"  class="pure-button pure-button-primary submit-btn" >Submit</button>
-        
-       
-    </form>
-</div>
+			
 			<footer >
 				<p>&trade;2018 Brian Strylowski, Bryan Zimmerman, Brian Mcilravy, Shaun Shah, Caleb Renfrow, John Dekis</p>
 			</footer>
