@@ -10,16 +10,16 @@ module.exports = function(sequelize, DataTypes) {
         isEmail: true
       }
     },
-    displayName: {
-      type: DataTypes.STRING,
-      unique: true,
-      allowNull: false,
-      validate: {
-        len: [3],
-        notEmpty: true,
-        isAlphanumeric: true
-      }
-    },
+    // displayName: {
+    //   type: DataTypes.STRING,
+    //   unique: true,
+    //   allowNull: false,
+    //   validate: {
+    //     len: [3],
+    //     notEmpty: true,
+    //     isAlphanumeric: true
+    //   }
+    // },
     password: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -27,15 +27,15 @@ module.exports = function(sequelize, DataTypes) {
         notEmpty: true
       }
     },
-    access: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      default: "user",
-      validate: {
-        notEmpty: true,
-        isIn: [["user", "admin"]]
-      }
-    }
+    // access: {
+    //   type: DataTypes.STRING,
+    //   allowNull: false,
+    //   default: "user",
+    //   validate: {
+    //     notEmpty: true,
+    //     isIn: [["user", "admin"]]
+    //   }
+    // }
   });
   
   return User;
