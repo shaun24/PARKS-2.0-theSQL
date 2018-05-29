@@ -3,7 +3,7 @@
 </div>
 <ul class="pure-g all">
     {{#each parks}}
-    <div class="pure-u-4-5 a-z solo" style="background-image: url('./{{#if Images}}{{#each Images}}{{url}}{{/each}}'{{else}}assets/images/parks/{{id}}.jpg'{{/if}});">
+    <div class="pure-u-4-5 a-z solo" style="background-image: url('{{#if Images}}{{#each Images}}{{url}}{{/each}}'{{else}}./assets/images/parks/2.jpg'{{/if}});">
         <div class="info">
            <a href="/{{name}}"><h2>{{name}}</h2></a>
             <h6>{{address}} | Size: {{size}}</h6>
