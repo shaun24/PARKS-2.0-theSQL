@@ -1,14 +1,9 @@
 $(document).ready(function() {
 // Get the modal
 var modal = document.getElementById('sign-in-modal');
-console.log("here");
 
 // When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
-  if (event.target == modal) {
-    modal.style.display = "none";
-  }
-}
+
 checkLogin();
 $("#sign-in").on("click",function(){
   if(!sessionStorage.getItem("email")){
