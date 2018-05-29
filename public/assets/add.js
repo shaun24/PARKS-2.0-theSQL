@@ -133,7 +133,6 @@ $(document).ready(function(){
     $.get("/api/latlng", data, function(response){
       data.lat = response.lat;
       data.lng = response.lng;
-      console.log(data);
       if (images.length === 0){
         add(data, "parks");
       } else {
@@ -210,45 +209,5 @@ $(document).ready(function(){
       $("#subheader").text("Add new features to a park we may have missed to our database");
     };
   });
-
-
-  // $(document).on("click", "#select-park", function() {
-  //   id = $("#park-id");
-  //   id = id[0].value;
-  //   console.log(id);
-  //   $.ajax({
-  //     method: "GET",
-  //     url: `/api/park/features/${id}`
-  //   }).then(function(dbFeatures){
-  //     console.log(dbFeatures);
-
-  //     $.ajax({
-  //       method: "GET",
-  //     url: `/api/availdetails`
-  //     }).then(function(dbAvailDetails){
-  //       console.log(dbAvailDetails);
-  //       var f;
-  //       var d;
-  //       var detailList;
-  //       var detailName;
-
-  //       for (var i = 0; i< dbFeatures.length; i++){
-  //         f = $("<fieldset>");
-  //         f.addClass("pure-group");
-  //         d = $("<div>");
-  //         d.text(dbAvailDetails[i].name);
-  //         d.attr("value", dbFeatures[i].id);
-  //         $("#new-detail").append(f, d);
-  //         for (var j = 0; j < dbAvailDetails.length; j++){
-  //           detailList = $("<input>");
-  //           detailList.attr("type", "number");
-  //           detailName = $("<p>");
-  //           detailName.text(dbAvailDetails[j].name);
-  //           $("#new-detail").append(detailName, detailList);
-  //         }
-        // }
-      // })
-    // });
-  // });
 
 });

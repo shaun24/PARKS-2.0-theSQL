@@ -32,7 +32,6 @@ module.exports = function (app) {
         parks: dbPark,
         az: { selected: true }
       };
-      console.log(dbPark[0].dataValues.Images[0].dataValues.file);
 
       res.render("all-parks", hbsObject);
     });
@@ -128,7 +127,6 @@ module.exports = function (app) {
         
         }).then(function(dbDetail){
           hbsObject.details = dbDetail;
-          //console.log(dbDetail[0].dataValues.AvailFeatureId);
           res.render("add-feature", hbsObject);
         })
       });
@@ -229,7 +227,6 @@ module.exports = function (app) {
         parks: dbPark,
         layout: "main"
       };
-      console.log(hbsObject);
       res.render("feature", hbsObject);
     });
   });
