@@ -16,7 +16,8 @@ module.exports = function(app) {
       keys.forEach(function(item){
         oldpath = files[item].path;
         newpath = path.join(__dirname, "../public/assets/images/parks/", files[item].name);
-        pathArray.push(newpath);
+        pathArray.push(files[item].name)
+        // pathArray.push(newpath);
         fs.rename(oldpath, newpath, checkFinished);
       });
 

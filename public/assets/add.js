@@ -51,7 +51,7 @@ $(document).ready(function(){
         var urlObjArray = [];
         result.forEach(function(item){
           urlObjArray.push({
-            url: item,
+            file: item,
             ParkId: id
           });
         });

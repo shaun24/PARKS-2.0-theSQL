@@ -32,7 +32,7 @@ module.exports = function (app) {
         parks: dbPark,
         az: { selected: true }
       };
-      console.log(hbsObject);
+      console.log(dbPark[0].dataValues.Images[0].dataValues.file);
 
       res.render("all-parks", hbsObject);
     });
