@@ -13,7 +13,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 // parse application/json
 app.use(bodyParser.json());
-app.use(express.static(process.cwd() + '/public'));
+app.use(express.static("public"));
+// app.use(express.static(process.cwd() + '/public'));
 
 
 var hbs = exphbs.create({
