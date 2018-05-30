@@ -42,7 +42,7 @@ app.set("view engine", "handlebars");
 //======================================================
 require("./routes/routes.js")(app);
 require("./routes/userRoutes.js")(app);//needs to atleast be above apiRoutes
-require("./routes/dbRoutes.js")(app);
+require("./routes/dbroutes.js")(app);
 require("./routes/apiRoutes.js")(app);
 
 
