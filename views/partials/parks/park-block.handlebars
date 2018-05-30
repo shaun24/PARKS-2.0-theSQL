@@ -13,8 +13,74 @@
 	{{#each Features}} 
 
 		{{#if (eq name "Basketball")}}
-			<li><a href="/features/basketball">
+			<li><a href="/features?name={{name}}">
 				<img src="/assets/images/png/basketball.png" class="pure-img icon" alt="Basketball Court">
+			</a></li>
+		{{/if}}
+
+		{{#if (eq name "Concessions")}}
+			<li><a href="/features?name={{name}}">
+				<img src="/assets/images/png/concessions.png" class="pure-img icon" alt="Concessions">
+			</a></li>
+		{{/if}}
+
+		{{#if (eq name "Disc Golf")}}
+			<li><a href="/features?name={{name}}">
+				<img src="/assets/images/png/disc_golf.png" class="pure-img icon" alt="Disc Golf">
+			</a></li>
+		{{/if}}
+
+		{{#if (eq name "Fields")}}
+			<li><a href="/features?name={{name}}">
+				<img src="/assets/images/png/fields.png" class="pure-img icon" alt="Playing Fields">
+			</a></li>
+		{{/if}}
+
+		{{#if (eq name "Horseshoes")}}
+			<li><a href="/features?name={{name}}">
+				<img src="/assets/images/png/horseshoes.png" class="pure-img icon" alt="Horseshoes">
+			</a></li>
+		{{/if}}
+
+		{{#if (eq name "Picnic Area")}}
+			<li><a href="/features?name={{name}}">
+				<img src="/assets/images/png/picnic_area.png" class="pure-img icon" alt="Picnic Area">
+			</a></li>
+		{{/if}}
+
+		{{#if (eq name "Playground")}}
+			<li><a href="/features?name={{name}}">
+				<img src="/assets/images/png/playground.png" class="pure-img icon" alt="Playground">
+			</a></li>
+		{{/if}}
+
+		{{#if (eq name "Tennis")}}
+			<li><a href="/features?name={{name}}">
+				<img src="/assets/images/png/tennis.png" class="pure-img icon" alt="Tennis Courts">
+			</a></li>
+		{{/if}}
+
+		{{#if (eq name "Track")}}
+			<li><a href="/features?name={{name}}">
+				<img src="/assets/images/png/track.png" class="pure-img icon" alt="Track">
+			</a></li>
+		{{/if}}
+
+		{{#if (eq name "Trails")}}
+			<li><a href="/features?name={{name}}">
+				<img src="/assets/images/png/trails.png" class="pure-img icon" alt="Hiking Trails">
+			</a></li>
+		{{/if}}
+
+		{{#if (eq name "Volleyball")}}
+			<li><a href="/features?name={{name}}">
+				<img src="/assets/images/png/volleyball.png" class="pure-img icon" alt="Volleyball">
+			</a></li>
+		{{/if}}
+
+		{{#if (eq name "Water Activities")}}
+			<li><a href="/features?name={{name}}">
+				<img src="/assets/images/png/water_activities.png" class="pure-img icon" alt="Water Activities">
 			</a></li>
 		{{/if}}
 
@@ -30,35 +96,35 @@
 			</a></li>
 		{{/if}} --}}
 
-		{{#if (eq name "Playground")}}
+		{{!-- {{#if (eq name "Playground")}}
 			<li><a href="/features/playground">
 				<img src="/assets/images/png/playground.png" class="pure-img icon" alt="Playground">
 			</a></li>
-		{{/if}}
+		{{/if}} --}}
 
-		{{#if (eq name "Fields")}}
+		{{!-- {{#if (eq name "Fields")}}
 			<li><a href="/features/soccer">
 				<img src="/assets/images/png/fields.png" class="pure-img icon" alt="Soccer Fields">
 			</a></li>
-		{{/if}}
+		{{/if}} --}}
 
-		{{#if (eq name "Tennis")}}
+		{{!-- {{#if (eq name "Tennis")}}
 			<li><a href="/features/tennis">
 				<img src="/assets/images/png/tennis.png" class="pure-img icon" alt="Tennis Courts">
 			</a></li>
-		{{/if}}
+		{{/if}} --}}
 
-		{{#if (eq name "Trails")}}
+		{{!-- {{#if (eq name "Trails")}}
 			<li><a href="/features/trails">
 				<img src="/assets/images/png/trails.png" class="pure-img icon" alt="Hiking Trails">
 			</a></li>
-		{{/if}}
+		{{/if}} --}}
 
-		{{#if (eq name "Concessions")}}
+		{{!-- {{#if (eq name "Concessions")}}
 			<li><a href="/features/vendingMachines">
 				<img src="/assets/images/png/vending-machine.png" class="pure-img icon" alt="Vending Machines">
 			</a></li>
-		{{/if}}
+		{{/if}} --}}
 
 		{{!-- {{#if views}}
 			<li><a href="/features/views">
@@ -66,11 +132,11 @@
 			</a></li>
 		{{/if}} --}}
 
-		{{#if (eq name "Water Activities")}}
+		{{!-- {{#if (eq name "Water Activities")}}
 			<li><a href="/features/waterSports">
 				<img src="/assets/images/png/water.png" class="pure-img icon" alt="Water Activities">
 			</a></li>
-		{{/if}}
+		{{/if}} --}}
 
 		{{!-- {{#if workoutGear}}
 			<li><a href="/features/wourkoutGear">

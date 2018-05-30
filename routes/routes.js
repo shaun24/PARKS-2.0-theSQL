@@ -223,11 +223,31 @@ module.exports = function (app) {
         }
       ]
     }).then(function (dbPark) {
-      var hbsObject = {
-        parks: dbPark,
-        layout: "main"
-      };
-      res.render("feature", hbsObject);
+
+      var array = [];
+      dbPark.forEach(function(item){
+        array.push(item.dataValues.name);
+      });
+      db.Park.findAll({
+        where: {
+          name: array
+        },
+        include:[
+          {
+            model: db.Feature
+          },
+          {
+            model: db.Image
+          }
+        ]
+      }).then(function (dbAllParkFeat) {
+        var hbsObject = {
+          parks: dbAllParkFeat,
+          layout: "main"
+        };
+        res.render("feature", hbsObject);
+      });
+
     });
   });
 
